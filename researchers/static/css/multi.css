@@ -1,0 +1,186 @@
+.section-team {
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 40px;
+}
+
+.section-team .single-person {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #f6f9ff;
+  border-radius: 5px;
+  box-shadow: 0 30px 50px -20px #6e3df6;
+  animation: loadProfile ease-in-out 1.5s;
+}
+
+.section-team .single-person:hover {
+  background: linear-gradient(to right, #6e3df6, #ccc);
+  cursor: pointer;
+}
+
+.section-team .single-person .person-image {
+  position: relative;
+  margin-bottom: 50px;
+  border-radius: 50%;
+  border: 4px dashed transparent;
+  transition: padding 0.3s;
+}
+
+.section-team .single-person:hover .person-image {
+  padding: 12px;
+  border: 4px dashed #fff;
+}
+
+.section-team .single-person .person-image img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.section-team .single-person .person-image .icon {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  background: linear-gradient(to right, #6e3df6, #ccc);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+}
+
+.section-team .single-person:hover .person-image .icon {
+  background: none;
+  background-color: #fff;
+  color: #6e3df6;
+}
+
+.section-team .single-person:hover .person-image .icon:hover {
+  background: linear-gradient(to right, #6e3df6, #ccc);
+  background-color: none;
+  color: #fff;
+}
+
+.section-team .single-person .person-info .full-name {
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.section-team .single-person .person-info .speciality {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #6e3df6;
+}
+
+.section-team .single-person:hover .full-name,
+.section-team .single-person:hover .speciality {
+  color: #fff;
+}
+
+.section-team a {
+  color: #6e3df6;
+  text-decoration: none;
+}
+
+.section-team .single-person:hover a {
+  color: #fff;
+}
+
+@keyframes loadProfile {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes loadTop {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.input-text:focus {
+  box-shadow: 0px 0px 0px;
+  border-color: #6e3df6;
+  outline: 0px;
+}
+
+.form-control {
+  border: 1px solid #6e3df6;
+}
+
+.suggestions {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.suggestions li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid #d8d8d8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+span.population {
+  font-size: 15px;
+}
+
+.three{
+  margin-top: 20px;
+  animation: loadTop 1.6s ease-in-out 0.5s;
+  animation-fill-mode: both;
+}
+
+.three h1 {
+  color: #6e3df6;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.three h1:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 55px;
+  background-color: #6e3df6;
+}
+
+.three h1:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: #6e3df6;
+}

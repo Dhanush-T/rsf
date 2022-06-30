@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/team.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+
+{% include "team/components/team_content.html" %}
+
+{% endblock %}

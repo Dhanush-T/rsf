@@ -1,0 +1,30 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+
+<main class="container my-5">
+  <section class="profile-container">
+    {% image self.image fill-274x274 as photo %}
+    <img src="{{ photo.url }}" class="profile-image img-fluid" />
+    <section class="profile-info">
+      <img src="{{ photo.url }}" class="profile-image-hidden img-fluid" />
+      <h1 class="first-name">{{ self.contact_name }}</h1>
+      <h2>Bio</h2>
+      <p>{{self.bio|richtext}}</p>
+      <h2>Intrests</h2>
+      <p>{{self.intrests|richtext}}</p>
+      {% for information in self.information.all %} {% if information.title%}
+      <h2>{{information.title}}</h2>
+      {% endif %} {{information.text|richtext}} {% endfor %}
+
+      <aside
+        class="social-media-icons d-flex justify-content-around flex-wrap card-body"
+      >
+        <a href="tel:{{self.phone_number}}" target="_blank">
+          <i class="fa fa-phone"></i> {{self.phone_number}}
+        </a>
+        <a href="mailto:{{self.email}}" target="_blank">
+          <i class="fa fa-envelope"></i> {{self.email}}
+        </a>
+      </aside>
+    </section>
+  </section>
+</main>

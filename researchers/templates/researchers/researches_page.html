@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/multi.css' %}" />
+{% endblock extra_css %}
+
+{% block content %}
+
+{% include "researchers/components/content.html" %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/multi.js' %}"></script>
+{% endblock %}

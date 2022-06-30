@@ -1,0 +1,15 @@
+:root {
+    --color-primary: #6e3df6;
+    --color-primary-darker: #333;
+    --color-primary-dark: #6e3df6;
+    --color-primary-lighter: #6e3df6;
+    --color-primary-light: #6e3df6;
+    --color-input-focus: #fefefe;
+    --color-input-focus-border: #6e3df6;
+    
+}
+
+.status-tag {
+    color: white !important;
+    background: #333 !important;
+}

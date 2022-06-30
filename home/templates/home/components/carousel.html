@@ -1,0 +1,29 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/carousel.css' %}">
+{% endblock extra_css %}
+{% block content %}
+    <div id="carouselControls" class="carousel slide homeCarousel" data-bs-ride="false" data-bs-touch="true">
+        <div class="carousel-inner">
+            {% for loop_cycle in self.carousel_images.all %}
+            {% image loop_cycle.carousel_image fill-1920x837 as img %}
+
+            <div class="carousel-item {% if forloop.first %}active{% endif %} ">
+                <img src="{{ img.url }}" alt="{{ img.alt }}" class="d-block w-100" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h4>{{ loop_cycle.heading }}</h4>
+                    <p>{{ loop_cycle.text|richtext }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+{% endblock content %}

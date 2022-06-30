@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+{% include "researchers/components/single_person.html" %}
+
+{% endblock content %}

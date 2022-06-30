@@ -1,0 +1,41 @@
+#cards .card {
+  cursor: pointer;
+  border-radius: 20px;
+  min-height: 100%;
+  box-shadow: 0 30px 50px -20px #6e3df6;
+  animation: loadProfile 1.6s ease-in-out;
+}
+
+#cards .heading-border {
+  position: absolute;
+  width: 100%;
+  top: 60%;
+}
+
+#cards .card .user-picture img {
+  position: absolute;
+  top: -60px;
+  right: 10%;
+  background: #f8f9fa !important;
+  box-shadow: 0 30px 50px -20px #6e3df6;
+  padding: 10px;
+}
+
+#cards .card .user-content .user-name {
+  margin-right: 150px;
+}
+
+.social button a i {
+  color: #6e3df6;
+}
+
+@keyframes loadProfile {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}

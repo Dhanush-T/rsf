@@ -1,0 +1,190 @@
+
+.events {
+    width: 100%;
+    padding: 0;
+    max-width: none;
+}
+
+.events #eventsCarousel {
+    width: 80%;
+    margin: auto;
+}
+
+.events .box {
+    margin: auto;
+    text-decoration: none;
+    margin: 2rem 0;
+}
+
+.events .box .cardBody {
+    display: flex;
+    align-items: center;
+}
+
+.events .box .cardBody .cardDates {
+    margin-right: 1.2rem;
+}
+
+.events .box .cardBody .cardDetails .dateTime span:first-of-type {
+    margin-right: 5px;
+}
+
+.events .box .cardBody .month {
+    font-family: Montserrat;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 2.2rem;
+    color: #000000;
+    text-align: center;
+}
+
+.events .box .cardBody .dateNumber {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 4.3rem;
+
+    color: #000000;
+}
+
+.events .box .cardBody .title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+
+    color: var(--brown);
+}
+
+.events .box .cardBody .venue {
+    font-family: Poppins;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+
+    color: rgba(150, 43, 7, 0.6);
+}
+
+.events .box .cardBody .dateTime {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+    margin-top: 0.9rem;
+}
+
+
+.events .carousel-indicators {
+    position: unset;
+    margin-top: 5.25rem;
+}
+
+.events .carousel-indicators button {
+    margin: 0;
+    height: 1px;
+    background-color: var(--brown);
+    width: 60px;
+}
+
+.events .carousel-indicators button.active {
+    height: 8px;
+    background: var(--brown);
+    border: 0;
+    margin: 7px 0;
+}
+
+@media (min-width: 767px) and (max-width: 1199.98px){
+    .events .box .cardBody .month {
+        font-weight: 500;
+        font-size: 1.8rem;
+    }
+
+    .events .box .cardBody .dateNumber {
+        font-weight: bold;
+        font-size: 3.65rem;
+    }
+
+    .events .box .cardBody .title {
+        font-size: 1.4rem;
+    }
+
+    .events .box .cardBody .venue {
+        font-size: 1.1rem;
+    }
+
+    .events .box .cardBody .dateTime {
+        font-size: 1rem;
+        margin-top: 0.9rem;
+    }
+}
+
+@media (max-width:768px)
+{
+    .events .carousel-indicators {
+        margin-top: 3rem;
+    }
+
+    .events .box .cardBody .month {
+        font-weight: 500;
+        font-size: 1.75rem;
+    }
+
+    .events .box .cardBody .dateNumber {
+        font-size: 2.85rem;
+    }
+
+    .events .box .cardBody .title {
+        font-size: 1.5rem;
+    }
+
+    .events .box .cardBody .venue {
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
+
+    .events .box .cardBody .dateTime {
+        font-size: 1.125rem;
+        margin-top: 0.9rem;
+    }
+
+}
+
+
+@media (max-width:576px){
+
+    .events .box {
+        margin: 1rem 0;
+    }
+
+    .events .box .cardBody .month {
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+
+    .events .box .cardBody .dateNumber {
+        font-size: 2.2rem;
+    }
+
+    .events .box .cardBody .title {
+        font-size: 1rem;
+    }
+
+    .events .box .cardBody .venue {
+        font-weight: 500;
+        font-size: 0.75rem;
+    }
+
+    .events .box .cardBody .dateTime {
+        font-size: 0.75rem;
+        margin-top: 0.9rem;
+    }
+}

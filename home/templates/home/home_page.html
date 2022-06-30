@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home_page.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+
+    {% include "home/components/carousel.html" %}
+
+    <div class="containTitle">
+        <div class="headings">
+            <div class="title">ABOUT US</div>
+        </div>
+    </div>
+    <div class="container">
+        {{self.about | richtext}}
+    </div>
+
+    {% include "home/components/news.html" %}
+    {% include "home/components/events.html" %}
+
+{% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/home_page.js' %}"></script>
+{% endblock extra_js%}

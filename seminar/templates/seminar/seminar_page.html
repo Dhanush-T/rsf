@@ -1,0 +1,110 @@
+{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load static %} {% block content %}
+<div class="container">
+  <div class="row pb-4">
+    <div class="col-12 text-center">
+      <div class="display-3">Seminar and Viva Voice</div>
+    </div>
+  </div>
+  <ul class="nav nav-pills nav-fill mt-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="pills-upcoming-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-upcoming"
+        type="button"
+        role="tab"
+        aria-controls="pills-upcoming"
+        aria-selected="true"
+      >
+        SEMINAR TALK
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="pills-past-tab"
+        data-bs-toggle="pill"
+        data-bs-target="#pills-past"
+        type="button"
+        role="tab"
+        aria-controls="pills-past"
+        aria-selected="false"
+      >
+        VIVA VOCE
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div
+      class="tab-pane fade show active table-responsive"
+      id="pills-upcoming"
+      role="tabpanel"
+      style="overflow-y: hidden;"
+      aria-labelledby="pills-upcoming-tab"
+    >
+      <div id="table-cover">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Speaker</th>
+              <th scope="col">Department</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for seminar in seminar_after_today %}
+            <tr>
+              <td>{{ seminar.title }}</td>
+              <td>{{ seminar.speaker }}</td>
+              <td>{{ seminar.department }}</td>
+              <td>{{ seminar.date }}</td>
+              <td>{{ seminar.time }}</td>
+              <td>{{ seminar.venue }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade table-responsive"
+      id="pills-past"
+      role="tabpanel"
+      style="overflow-y: hidden;"
+      aria-labelledby="pills-past-tab"
+    >
+      <div id="table-cover">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Speaker</th>
+              <th scope="col">Department</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for seminar in viva_voice_after_today %}
+            <tr>
+              <td>{{ seminar.title }}</td>
+              <td>{{ seminar.speaker }}</td>
+              <td>{{ seminar.department }}</td>
+              <td>{{ seminar.date }}</td>
+              <td>{{ seminar.time }}</td>
+              <td>{{ seminar.venue }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

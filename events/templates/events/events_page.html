@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %}
+{% load static %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row pb-4">
+    <div class="col-12 text-center">
+      <div class="display-3">Events</div>
+    </div>
+  </div>
+  <ul class="nav nav-pills nav-fill mt-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-upcoming-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming" type="button" role="tab" aria-controls="pills-upcoming" aria-selected="true">UPCOMING EVENTS</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-past-tab" data-bs-toggle="pill" data-bs-target="#pills-past" type="button" role="tab" aria-controls="pills-past" aria-selected="false">PAST EVENTS</button>
+      </li>
+      
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active table-responsive" style="overflow-y: hidden;" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
+        <div id="table-cover" >
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Speaker</th>
+              <th scope="col">Venue</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Details</th>
+              <th scope="col">Register</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for event in events_after_today %}
+            <tr>
+              <td>{{ event.name }}</td>
+              <td>{{ event.speaker }}</td>
+              <td>{{ event.venue }}</td>
+              <td>{{ event.date }}</td>
+              <td>{{ event.time }}</td>
+              <td>
+                  <a href="{{event.details.url}}">Check</a>
+              </td>
+              <td>
+                  <a href="{{event.registeration_link}}">Register</a>
+              </td>
+            </tr>
+            {% endfor %}
+        </table>
+      </div>
+      </div>
+      <div class="tab-pane fade table-responsive" style="overflow-y: hidden;" id="pills-past" role="tabpanel" aria-labelledby="pills-past-tab">
+        <div id="table-cover" >
+          <table class="table">
+            <thead>
+              <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Speaker</th>
+                  <th scope="col">Venue</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Details</th>
+                  <th scope="col">Register</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for event in events_before_today %}
+              <tr>
+                  <td>{{ event.name }}</td>
+                  <td>{{ event.speaker }}</td>
+                  <td>{{ event.venue }}</td>
+                  <td>{{ event.date }}</td>
+                  <td>{{ event.time }}</td>
+                  <td>
+                      <a href="{{event.details.url}}">Download</a>
+                  </td>
+                  <td>
+                      <a href="{{event.registeration_link}}">Register</a>
+                  </td>
+              </tr>
+              {% endfor %}
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+

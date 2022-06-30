@@ -1,0 +1,63 @@
+.path {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 2% 2%;
+  z-index: 100;
+}
+
+.global-top {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+}
+
+.global-top > .top-left-col {
+    width: 30%;
+    padding: 1rem;
+}
+
+.global-top > .top-right-col {
+    width: 70%;
+    padding: 1rem;
+    word-wrap: break-word;
+    text-align: justify;
+}
+
+@media screen and (max-width: 990px) {
+    .global-top > .top-left-col {
+        max-width: 35%;
+        width: 35%;
+    }
+    .global-top > .top-right-col {
+        max-width: 65%;
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .global-top > .top-left-col {
+        display: none;
+    }
+    .global-top > .top-right-col {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0rem !important;
+    }
+}
+
+.htCenter {
+    text-align: center;
+}
+
+.htJustify {
+    text-align: justify;
+}
+
+.htLeft {
+    text-align: left;
+}
+
+.htRight {
+    text-align: right;
+}

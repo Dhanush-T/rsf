@@ -1,0 +1,26 @@
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock extra_css %}
+{% block content %}
+    {% if self.news.all|length %}
+    <div class="circulars containTitle">
+        <div class="headings">
+            <div class="title">News</div>
+        </div>
+        <div class="linksContainer">
+            <div class="links row">
+                {% for item in self.news.all %}
+                    <div class="col-xs-6 col-sm-4">
+                        <div class="linkBox">
+                        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="link">
+                            {{item.name}}
+                        </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock content %}

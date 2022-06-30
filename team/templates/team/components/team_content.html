@@ -1,0 +1,118 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load menu_tags %}
+
+<main>
+  <!-- Ui cards -->
+  <section id="cards">
+    <div class="container py-2">
+      <div class="row pb-4">
+        <div class="col-12 text-center">
+          <div class="display-3">Our Team</div>
+        </div>
+      </div>
+      <!-- cards -->
+      <div class="row justify-content-center">
+        {% for page in self.people.all %}
+        <div class="col-lg-4 col-md-6 mb-4 pt-5" onclick="window.location.href='{{ page.profile_page.url }}'">
+          <div class="card border-0">
+            <div class="card-body">
+              <div class="user-picture">
+                {% image page.image fill-130x130 as img %}
+                <img
+                  src="{{ img.url }}"
+                  class="rounded-circle"
+                  height="130"
+                  width="130"
+                />
+              </div>
+              <div class="user-content">
+                <h5 class="text-capitalize user-name">{{page.name}}</h5>
+                <p class="text-capitalize text-muted small blockquote-footer m-1">
+                  {{page.position}}
+                </p>
+                <p class="small text-muted mb-0">
+                  {{page.profile_page.bio|richtext}}
+                </p>
+                <div class="social social-gray">
+                  {% if page.phone_number %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-light soc"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=""
+                  >
+                    <a href="tel:{{page.phone_number}}" target="_blank">
+                      <i class="fa fa-phone"></i>
+                    </a>
+                  </button>
+                  {% endif %}
+                  
+                  {% if page.email %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-light soc"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=""
+                    
+                  >
+                    <a href="mailto:{{page.email}}" target="_blank">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                  </button>
+                  {% endif %}
+
+                  {% if page.facebook_link %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-light soc"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=""
+                  >
+                    <a href="{{page.facebook_link}}" target="_blank">
+                      <i class="fab fa-facebook"></i>
+                    </a>
+                  </button>
+                  {% endif %}
+          
+                  {% if page.google_scholar_link %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-light soc"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=""
+                  >
+                    <a href="{{page.google_scholar_link}}" target="_blank">
+                      <i class="fab fa-google"></i>
+                    </a>
+                  </button>
+                  {% endif %}
+          
+                  {% if page.linkedin_link %}
+                  <button
+                    type="button"
+                    class="btn btn-outline-light soc"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=""
+                    
+                  >
+                    <a href="{{page.linkedin_link}}" target="_blank">
+                      <i class="fab fa-linkedin"></i>
+                    </a>
+                  </button>
+                  {% endif %}
+                </div>              
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- /cards -->
+  </section>
+  <!-- /Ui cards -->
+</main>

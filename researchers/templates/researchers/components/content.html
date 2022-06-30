@@ -1,0 +1,88 @@
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load menu_tags %}
+
+<section class="section-team">
+  <div class="container">
+    <div class="row pb-4">
+      <div class="col-12 text-center">
+        <div class="display-3">Researchers</div>
+      </div>
+    </div>
+    <div class="container justify-content-center" id="search-bar">
+      <div class="row justify-content-end">
+        <div class="col-md-4">
+          <div class="input-group">
+            <input
+              type="text"
+              id="search"
+              class="form-control input-text"
+              placeholder="Search Department or Researcher"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              autocomplete="off"
+            />
+          </div>
+          <ul class="suggestions"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="depts">
+      {% for department in departments %}
+      <div class="three">
+        <h1 id="{{department}}">{{department}}</h1>
+      </div>
+
+      <div class="row justify-content-center">
+        {% for page in self.get_children.specific %} {% if page.department == department %}
+        <div
+          class="col-sm-6 col-lg-4 col-xl-3"
+          onclick="window.location.href='{{ page.url }}'"
+        >
+          <div class="single-person" id="{{page.contact_name}}">
+            <div class="person-image">
+              {% image page.image fill-200x200 as img %}
+              <img src="{{ img.url }}" alt="..." />
+              <a href="tel:{{page.phone_number}}" class="icon">
+                <i class="fa fa-phone"></i>
+              </a>
+            </div>
+            <div class="person-info text-center">
+              <h3 class="full-name">{{page.contact_name}}</h3>
+              <a href="mailto:{{page.email}}">{{page.email}}</a>
+            </div>
+          </div>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  let departments = []
+  let people = []
+  {% for page in self.get_children.specific %}
+    people.push("{{page.contact_name}}")
+  {% endfor %}
+  {% for department in departments %}
+  departments.push("{{department}}")
+  {% endfor %}
+
+  let suggestions = document.querySelector(".suggestions");
+  document.getElementById("search").addEventListener("keyup", function(e) {
+    let search = e.target.value;
+    let result = [];
+    if (search.length > 0) {
+      result = departments.filter(dept => dept.toLowerCase().startsWith(search.toLowerCase()));
+      result = result.concat(people.filter(person => person.toLowerCase().startsWith(search.toLowerCase())));
+    }
+    suggestions.innerHTML = "";
+    result.forEach(dept => {
+      suggestions.innerHTML += `<li onclick="window.location.href='/researcher/#${dept}'">${dept}</li>`;
+    });
+    if(search.length > 0 && result.length == 0) {
+      suggestions.innerHTML = `<li>No Results Found</li>`
+    }
+  });
+</script>
