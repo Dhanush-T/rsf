@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0069_log_entry_jsonfield'),
-        ('team', '0001_initial'),
+        ("wagtailcore", "0069_log_entry_jsonfield"),
+        ("team", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='people',
-            name='profile_page',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page'),
+            model_name="people",
+            name="profile_page",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailcore.page",
+            ),
         ),
     ]

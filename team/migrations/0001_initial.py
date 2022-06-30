@@ -10,39 +10,87 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailimages', '0024_index_image_file_hash'),
-        ('wagtailcore', '0069_log_entry_jsonfield'),
+        ("wagtailimages", "0024_index_image_file_hash"),
+        ("wagtailcore", "0069_log_entry_jsonfield"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TeamPage',
+            name="TeamPage",
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                (
+                    "page_ptr",
+                    models.OneToOneField(
+                        auto_created=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        parent_link=True,
+                        primary_key=True,
+                        serialize=False,
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
-            bases=('wagtailcore.page',),
+            bases=("wagtailcore.page",),
         ),
         migrations.CreateModel(
-            name='People',
+            name="People",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('name', models.CharField(max_length=225, null=True)),
-                ('position', models.CharField(max_length=225, null=True)),
-                ('email', models.TextField(max_length=225, null=True)),
-                ('phone_number', models.TextField(blank=True, max_length=225, null=True)),
-                ('facebook_link', models.URLField(blank=True, max_length=225, null=True)),
-                ('linkedin_link', models.URLField(blank=True, max_length=225, null=True)),
-                ('google_scholar_link', models.URLField(blank=True, max_length=225, null=True)),
-                ('image', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image')),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='people', to='team.teampage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("name", models.CharField(max_length=225, null=True)),
+                ("position", models.CharField(max_length=225, null=True)),
+                ("email", models.TextField(max_length=225, null=True)),
+                (
+                    "phone_number",
+                    models.TextField(blank=True, max_length=225, null=True),
+                ),
+                (
+                    "facebook_link",
+                    models.URLField(blank=True, max_length=225, null=True),
+                ),
+                (
+                    "linkedin_link",
+                    models.URLField(blank=True, max_length=225, null=True),
+                ),
+                (
+                    "google_scholar_link",
+                    models.URLField(blank=True, max_length=225, null=True),
+                ),
+                (
+                    "image",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailimages.image",
+                    ),
+                ),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="people",
+                        to="team.teampage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['sort_order'],
-                'abstract': False,
+                "ordering": ["sort_order"],
+                "abstract": False,
             },
         ),
     ]

@@ -2,11 +2,7 @@ from django.db import models
 
 from modelcluster.fields import ParentalKey
 
-from wagtail.admin.edit_handlers import (
-    FieldPanel,
-    MultiFieldPanel,
-    InlinePanel
-)
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -31,22 +27,24 @@ class CarouselImages(Orderable):
         FieldPanel("text"),
     ]
 
+
 class Events(Orderable):
-    
+
     title = models.CharField(max_length=255, blank=False, null=True)
     page = ParentalKey("home.HomePage", related_name="events")
     url = models.URLField(blank=False, null=True)
     date_time = models.DateTimeField(blank=False, null=True)
     venue = models.CharField(max_length=255, blank=False, null=True)
-    
+
     panel = [
         FieldPanel("name"),
         FieldPanel("external_link"),
         FieldPanel("internal_link"),
     ]
 
+
 class News(Orderable):
-    
+
     name = models.CharField(max_length=255, blank=False, null=True)
     page = ParentalKey("home.HomePage", related_name="news")
     url = models.URLField(blank=False, null=True)
@@ -83,5 +81,3 @@ class HomePage(Page):
         ),
         FieldPanel("about"),
     ]
-        
-    

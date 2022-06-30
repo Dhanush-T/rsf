@@ -8,43 +8,69 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0069_log_entry_jsonfield'),
-        ('events', '0001_initial'),
+        ("wagtailcore", "0069_log_entry_jsonfield"),
+        ("events", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Event',
+            name="Event",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('name', models.CharField(max_length=255)),
-                ('speaker', models.CharField(max_length=255)),
-                ('venue', models.CharField(max_length=255)),
-                ('date', models.DateField()),
-                ('time', models.TimeField()),
-                ('registeration_link', models.URLField(blank=True, max_length=255, null=True)),
-                ('details', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("speaker", models.CharField(max_length=255)),
+                ("venue", models.CharField(max_length=255)),
+                ("date", models.DateField()),
+                ("time", models.TimeField()),
+                (
+                    "registeration_link",
+                    models.URLField(blank=True, max_length=255, null=True),
+                ),
+                (
+                    "details",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to="wagtailcore.page",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['sort_order'],
-                'abstract': False,
+                "ordering": ["sort_order"],
+                "abstract": False,
             },
         ),
         migrations.RemoveField(
-            model_name='eventspage',
-            name='events_head',
+            model_name="eventspage",
+            name="events_head",
         ),
         migrations.RemoveField(
-            model_name='eventspage',
-            name='events_title',
+            model_name="eventspage",
+            name="events_title",
         ),
         migrations.DeleteModel(
-            name='EventPage',
+            name="EventPage",
         ),
         migrations.AddField(
-            model_name='event',
-            name='page',
-            field=modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='events', to='events.eventspage'),
+            model_name="event",
+            name="page",
+            field=modelcluster.fields.ParentalKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="events",
+                to="events.eventspage",
+            ),
         ),
     ]

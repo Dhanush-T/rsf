@@ -38,7 +38,7 @@
           class="col-sm-6 col-lg-4 col-xl-3"
           onclick="window.location.href='{{ page.url }}'"
         >
-          <div class="single-person" id="{{page.contact_name}}">
+          <div class="single-person" id="{{page.name}}">
             <div class="person-image">
               {% image page.image fill-200x200 as img %}
               <img src="{{ img.url }}" alt="..." />
@@ -47,7 +47,7 @@
               </a>
             </div>
             <div class="person-info text-center">
-              <h3 class="full-name">{{page.contact_name}}</h3>
+              <h3 class="full-name">{{page.name}}</h3>
               <a href="mailto:{{page.email}}">{{page.email}}</a>
             </div>
           </div>
@@ -63,7 +63,7 @@
   let departments = []
   let people = []
   {% for page in self.get_children.specific %}
-    people.push("{{page.contact_name}}")
+    people.push("{{page.name}}")
   {% endfor %}
   {% for department in departments %}
   departments.push("{{department}}")

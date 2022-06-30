@@ -7,23 +7,29 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailimages', '0024_index_image_file_hash'),
-        ('researchers', '0004_seminarandviva_type_alter_researcherpage_department'),
+        ("wagtailimages", "0024_index_image_file_hash"),
+        ("researchers", "0004_seminarandviva_type_alter_researcherpage_department"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='researcherpage',
-            name='address',
+            model_name="researcherpage",
+            name="address",
         ),
         migrations.AlterField(
-            model_name='researcherpage',
-            name='contact_name',
+            model_name="researcherpage",
+            name="contact_name",
             field=models.TextField(blank=True, max_length=225, null=True),
         ),
         migrations.AlterField(
-            model_name='researcherpage',
-            name='image',
-            field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image'),
+            model_name="researcherpage",
+            name="image",
+            field=models.ForeignKey(
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailimages.image",
+            ),
         ),
     ]

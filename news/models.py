@@ -8,7 +8,7 @@ from wagtail.core.models import Page
 
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.core.models import Page
-from wagtail.core.fields import  StreamField
+from wagtail.core.fields import StreamField
 
 from wagtail.core.fields import StreamField
 from wagtail.core.blocks import RichTextBlock
@@ -132,4 +132,3 @@ class NewsPage(Page):
         context["posts"] = posts
         context["offset"] = offset
         return context
-

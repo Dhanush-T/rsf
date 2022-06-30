@@ -1,11 +1,10 @@
 from django.utils.html import format_html
 from django.templatetags.static import static
-from django.contrib.auth.models import Permission
-from django.contrib import admin
-from researchers.models import ResearcherPage
-from wagtail.models import GroupPagePermission
 
 from wagtail.core import hooks
+from django.contrib import admin
+from django.contrib.auth.models import Permission
+from wagtail.models import GroupCollectionPermission, Collection
 
 
 @hooks.register("insert_global_admin_css")
@@ -14,5 +13,5 @@ def global_admin_css():
 
 
 admin.site.register(Permission)
-admin.site.register(ResearcherPage)
-admin.site.register(GroupPagePermission)
+admin.site.register(GroupCollectionPermission)
+admin.site.register(Collection)

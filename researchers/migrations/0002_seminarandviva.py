@@ -8,25 +8,63 @@ import modelcluster.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('researchers', '0001_initial'),
+        ("researchers", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SeminarAndViva',
+            name="SeminarAndViva",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('sort_order', models.IntegerField(blank=True, editable=False, null=True)),
-                ('title', models.CharField(max_length=225, null=True)),
-                ('department', models.CharField(choices=[('', ''), ('Architecture', 'Architecture'), ('Chemical Engineering', 'Chemical Engineering'), ('Civil Engineering', 'Civil Engineering'), ('Computer Science', 'Computer Science'), ('Electrical Engineering', 'Electrical Engineering'), ('Environmental Engineering', 'Environmental Engineering'), ('Industrial Engineering', 'Industrial Engineering'), ('Materials Science', 'Materials Science'), ('Mechanical Engineering', 'Mechanical Engineering'), ('Nuclear Engineering', 'Nuclear Engineering'), ('Physics', 'Physics')], default='', max_length=225)),
-                ('date', models.DateField(null=True)),
-                ('time', models.TimeField(null=True)),
-                ('venue', models.CharField(max_length=225, null=True)),
-                ('page', modelcluster.fields.ParentalKey(on_delete=django.db.models.deletion.CASCADE, related_name='seminar_and_viva', to='researchers.researcherpage')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "sort_order",
+                    models.IntegerField(blank=True, editable=False, null=True),
+                ),
+                ("title", models.CharField(max_length=225, null=True)),
+                (
+                    "department",
+                    models.CharField(
+                        choices=[
+                            ("", ""),
+                            ("Architecture", "Architecture"),
+                            ("Chemical Engineering", "Chemical Engineering"),
+                            ("Civil Engineering", "Civil Engineering"),
+                            ("Computer Science", "Computer Science"),
+                            ("Electrical Engineering", "Electrical Engineering"),
+                            ("Environmental Engineering", "Environmental Engineering"),
+                            ("Industrial Engineering", "Industrial Engineering"),
+                            ("Materials Science", "Materials Science"),
+                            ("Mechanical Engineering", "Mechanical Engineering"),
+                            ("Nuclear Engineering", "Nuclear Engineering"),
+                            ("Physics", "Physics"),
+                        ],
+                        default="",
+                        max_length=225,
+                    ),
+                ),
+                ("date", models.DateField(null=True)),
+                ("time", models.TimeField(null=True)),
+                ("venue", models.CharField(max_length=225, null=True)),
+                (
+                    "page",
+                    modelcluster.fields.ParentalKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="seminar_and_viva",
+                        to="researchers.researcherpage",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['sort_order'],
-                'abstract': False,
+                "ordering": ["sort_order"],
+                "abstract": False,
             },
         ),
     ]

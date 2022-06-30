@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "wagtailmarkdown",
     "wagtail.embeds",
     "wagtail.sites",
-    "wagtail.users",
+    "adminPage.config.CustomUsersAppConfig",
     "wagtail.snippets",
     "wagtail.documents",
     "wagtail.images",
@@ -181,7 +181,3 @@ WAGTAILUSERS_PASSWORD_REQUIRED = False
 WAGTAILUSERS_PASSWORD_ENABLED = False
 
 WAGTAIL_PASSWORD_RESET_ENABLED = False
-
-AUTHENTICATION_BACKENDS = [
-    "rsf.auth.IMAPAuthentication",
-]

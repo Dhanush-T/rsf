@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms.widgets import Select
 from wagtail.admin.forms import WagtailAdminPageForm
 
 from django.db import models
@@ -26,7 +25,7 @@ class ResearcherPage(Page):
         blank=False,
         on_delete=models.SET_NULL,
         related_name="+",
-        default=None
+        default=None,
     )
     bio = RichTextField(blank=False, null=True)
     intrests = RichTextField(blank=False, null=True)
@@ -51,10 +50,34 @@ class ResearcherPage(Page):
         default="Professor",
     )
 
-    contact_name = TextField(max_length=225, blank=True, null=True)
-    
+    name = TextField(max_length=225, blank=True, null=True)
+
     phone_number = TextField(max_length=225, blank=True, null=True)
     email = TextField(max_length=225, blank=False, null=True)
+
+    google_scholar_link = models.URLField(
+        max_length=225,
+        blank=True,
+        null=True,
+        default=None,
+        help_text="Link to Google Scholar profile",
+    )
+
+    facebook_link = models.URLField(
+        max_length=225,
+        blank=True,
+        null=True,
+        default=None,
+        help_text="Link to Facebook profile",
+    )
+
+    linkedin_link = models.URLField(
+        max_length=225,
+        blank=True,
+        null=True,
+        default=None,
+        help_text="Link to LinkedIn profile",
+    )
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
@@ -62,40 +85,30 @@ class ResearcherPage(Page):
                 ImageChooserPanel("image"),
                 FieldPanel("bio"),
                 FieldPanel("intrests"),
-                FieldPanel(
-                    "department",
-                    widget=Select(
-                        choices=(
-                            ("", ""),
-                            ("Architecture", "Architecture"),
-                            ("Chemical Engineering", "Chemical Engineering"),
-                            ("Civil Engineering", "Civil Engineering"),
-                            ("Computer Science", "Computer Science"),
-                            ("Electrical Engineering", "Electrical Engineering"),
-                            ("Environmental Engineering", "Environmental Engineering"),
-                            ("Industrial Engineering", "Industrial Engineering"),
-                            ("Materials Science", "Materials Science"),
-                            ("Mechanical Engineering", "Mechanical Engineering"),
-                            ("Nuclear Engineering", "Nuclear Engineering"),
-                            ("Physics", "Physics"),
-                        )
-                    ),
-                ),
             ]
         ),
         MultiFieldPanel(
             [InlinePanel("information", label="information")], heading="Information"
         ),
         MultiFieldPanel(
-            [InlinePanel("seminar_and_viva", label="Seminar And Viva Voice")], heading="Seminar And Viva Voice"
+            [InlinePanel("seminar_and_viva", label="Seminar And Viva Voice")],
+            heading="Seminar And Viva Voice",
         ),
         MultiFieldPanel(
             [
-                FieldPanel("contact_name"),
+                FieldPanel("name"),
                 FieldPanel("phone_number"),
                 FieldPanel("email"),
             ],
             heading="Contact",
+        ),
+        MultiFieldPanel(
+            [
+                FieldPanel("google_scholar_link"),
+                FieldPanel("facebook_link"),
+                FieldPanel("linkedin_link"),
+            ],
+            heading="Social Links",
         ),
     ]
 
@@ -120,28 +133,47 @@ class Information(Orderable):
 
     panels = [FieldPanel("title"), FieldPanel("text")]
 
+
 class SeminarAndViva(Orderable):
     page = ParentalKey("researchers.ResearcherPage", related_name="seminar_and_viva")
 
     title = models.CharField(max_length=225, blank=False, null=True)
-    
+
     department = models.CharField(
         max_length=225,
         blank=False,
         null=False,
         choices=(
-            ("", ""),
             ("Architecture", "Architecture"),
             ("Chemical Engineering", "Chemical Engineering"),
             ("Civil Engineering", "Civil Engineering"),
-            ("Computer Science", "Computer Science"),
-            ("Electrical Engineering", "Electrical Engineering"),
-            ("Environmental Engineering", "Environmental Engineering"),
-            ("Industrial Engineering", "Industrial Engineering"),
-            ("Materials Science", "Materials Science"),
+            ("Chemistry", "Chemistry"),
+            ("Computer Applications", "Computer Applications"),
+            ("Computer Science and Engineering", "Computer Science and Engineering"),
+            (
+                "Electrical and Electronics Engineering",
+                "Electrical and Electronics Engineering",
+            ),
+            (
+                "Electronics and Communication Engineering",
+                "Electronics and Communication Engineering",
+            ),
+            ("Humanities and Social Sciences", "Humanities and Social Sciences"),
+            (
+                "Instrumentation and Control Engineering",
+                "Instrumentation and Control Engineering",
+            ),
             ("Mechanical Engineering", "Mechanical Engineering"),
-            ("Nuclear Engineering", "Nuclear Engineering"),
+            (
+                "Metallurgical and Materials Engineering",
+                "Metallurgical and Materials Engineering",
+            ),
             ("Physics", "Physics"),
+            ("Production Engineering", "Production Engineering"),
+            ("Management Studies", "Management Studies"),
+            ("Mathematics", "Mathematics"),
+            ("Energy and Environment", "Energy and Environment"),
+            ("CECASE", "CECASE"),
         ),
         default="",
     )
@@ -150,10 +182,7 @@ class SeminarAndViva(Orderable):
         max_length=225,
         blank=False,
         null=False,
-        choices=(
-            ("Seminar", "Seminar"),
-            ("Viva Voice", "Viva Voice")
-        ),
+        choices=(("Seminar", "Seminar"), ("Viva Voice", "Viva Voice")),
         default="Seminar",
     )
 
@@ -162,12 +191,18 @@ class SeminarAndViva(Orderable):
     venue = models.CharField(max_length=225, blank=False, null=True)
     speaker = models.CharField(max_length=225, blank=False, null=True)
 
-    panels = [FieldPanel("title"), FieldPanel("department"), FieldPanel("type"), FieldPanel("date"), FieldPanel("time"), FieldPanel("venue")]
+    panels = [
+        FieldPanel("title"),
+        FieldPanel("department"),
+        FieldPanel("type"),
+        FieldPanel("date"),
+        FieldPanel("time"),
+        FieldPanel("venue"),
+    ]
 
     def save(self, *args, **kwargs):
-        self.speaker = self.page.contact_name
+        self.speaker = self.page.name
         super().save(*args, **kwargs)
-
 
 
 class researchersPageWagtailForm(WagtailAdminPageForm):
@@ -181,6 +216,8 @@ class researchersPageWagtailForm(WagtailAdminPageForm):
 
 
 class ResearchesPage(Page):
+
+    max_count = 1
 
     subpage_types = [
         "researchers.ResearcherPage",

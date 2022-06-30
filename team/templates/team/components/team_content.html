@@ -16,7 +16,7 @@
           <div class="card border-0">
             <div class="card-body">
               <div class="user-picture">
-                {% image page.image fill-130x130 as img %}
+                {% image page.profile_page.image fill-130x130 as img %}
                 <img
                   src="{{ img.url }}"
                   class="rounded-circle"
@@ -25,7 +25,7 @@
                 />
               </div>
               <div class="user-content">
-                <h5 class="text-capitalize user-name">{{page.name}}</h5>
+                <h5 class="text-capitalize user-name">{{page.profile_page.name}}</h5>
                 <p class="text-capitalize text-muted small blockquote-footer m-1">
                   {{page.position}}
                 </p>
@@ -33,7 +33,7 @@
                   {{page.profile_page.bio|richtext}}
                 </p>
                 <div class="social social-gray">
-                  {% if page.phone_number %}
+                  {% if page.profile_page.phone_number %}
                   <button
                     type="button"
                     class="btn btn-outline-light soc"
@@ -41,13 +41,13 @@
                     data-placement="bottom"
                     title=""
                   >
-                    <a href="tel:{{page.phone_number}}" target="_blank">
+                    <a href="tel:{{page.profile_page.phone_number}}" target="_blank">
                       <i class="fa fa-phone"></i>
                     </a>
                   </button>
                   {% endif %}
                   
-                  {% if page.email %}
+                  {% if page.profile_page.email %}
                   <button
                     type="button"
                     class="btn btn-outline-light soc"
@@ -56,13 +56,13 @@
                     title=""
                     
                   >
-                    <a href="mailto:{{page.email}}" target="_blank">
+                    <a href="mailto:{{page.profile_page.email}}" target="_blank">
                       <i class="fa fa-envelope"></i>
                     </a>
                   </button>
                   {% endif %}
 
-                  {% if page.facebook_link %}
+                  {% if page.profile_page.facebook_link %}
                   <button
                     type="button"
                     class="btn btn-outline-light soc"
@@ -70,13 +70,13 @@
                     data-placement="bottom"
                     title=""
                   >
-                    <a href="{{page.facebook_link}}" target="_blank">
+                    <a href="{{page.profile_page.facebook_link}}" target="_blank">
                       <i class="fab fa-facebook"></i>
                     </a>
                   </button>
                   {% endif %}
           
-                  {% if page.google_scholar_link %}
+                  {% if page.profile_page.google_scholar_link %}
                   <button
                     type="button"
                     class="btn btn-outline-light soc"
@@ -84,13 +84,13 @@
                     data-placement="bottom"
                     title=""
                   >
-                    <a href="{{page.google_scholar_link}}" target="_blank">
+                    <a href="{{page.profile_page.google_scholar_link}}" target="_blank">
                       <i class="fab fa-google"></i>
                     </a>
                   </button>
                   {% endif %}
           
-                  {% if page.linkedin_link %}
+                  {% if page.profile_page.linkedin_link %}
                   <button
                     type="button"
                     class="btn btn-outline-light soc"
@@ -99,7 +99,7 @@
                     title=""
                     
                   >
-                    <a href="{{page.linkedin_link}}" target="_blank">
+                    <a href="{{page.profile_page.linkedin_link}}" target="_blank">
                       <i class="fab fa-linkedin"></i>
                     </a>
                   </button>

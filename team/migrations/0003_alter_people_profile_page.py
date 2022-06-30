@@ -7,14 +7,19 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('researchers', '0002_seminarandviva'),
-        ('team', '0002_people_profile_page'),
+        ("researchers", "0002_seminarandviva"),
+        ("team", "0002_people_profile_page"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='people',
-            name='profile_page',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='researchers.researcherpage'),
+            model_name="people",
+            name="profile_page",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="researchers.researcherpage",
+            ),
         ),
     ]
