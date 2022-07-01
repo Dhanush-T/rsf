@@ -34,18 +34,36 @@ class ResearcherPage(Page):
         blank=False,
         null=False,
         choices=(
-            ("", ""),
             ("Architecture", "Architecture"),
             ("Chemical Engineering", "Chemical Engineering"),
             ("Civil Engineering", "Civil Engineering"),
-            ("Computer Science", "Computer Science"),
-            ("Electrical Engineering", "Electrical Engineering"),
-            ("Environmental Engineering", "Environmental Engineering"),
-            ("Industrial Engineering", "Industrial Engineering"),
-            ("Materials Science", "Materials Science"),
+            ("Chemistry", "Chemistry"),
+            ("Computer Applications", "Computer Applications"),
+            ("Computer Science and Engineering", "Computer Science and Engineering"),
+            (
+                "Electrical and Electronics Engineering",
+                "Electrical and Electronics Engineering",
+            ),
+            (
+                "Electronics and Communication Engineering",
+                "Electronics and Communication Engineering",
+            ),
+            ("Humanities and Social Sciences", "Humanities and Social Sciences"),
+            (
+                "Instrumentation and Control Engineering",
+                "Instrumentation and Control Engineering",
+            ),
             ("Mechanical Engineering", "Mechanical Engineering"),
-            ("Nuclear Engineering", "Nuclear Engineering"),
-            ("Other", "Other"),
+            (
+                "Metallurgical and Materials Engineering",
+                "Metallurgical and Materials Engineering",
+            ),
+            ("Physics", "Physics"),
+            ("Production Engineering", "Production Engineering"),
+            ("Management Studies", "Management Studies"),
+            ("Mathematics", "Mathematics"),
+            ("Energy and Environment", "Energy and Environment"),
+            ("CECASE", "CECASE"),
         ),
         default="Professor",
     )
@@ -82,6 +100,7 @@ class ResearcherPage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
+                FieldPanel("name"),
                 ImageChooserPanel("image"),
                 FieldPanel("bio"),
                 FieldPanel("intrests"),
@@ -96,7 +115,6 @@ class ResearcherPage(Page):
         ),
         MultiFieldPanel(
             [
-                FieldPanel("name"),
                 FieldPanel("phone_number"),
                 FieldPanel("email"),
             ],
@@ -117,8 +135,6 @@ class ResearcherPage(Page):
         self.slug = slugify(self.title)
         return super().clean()
 
-
-ResearcherPage._meta.get_field("title").verbose_name = "name"
 
 
 class Information(Orderable):
@@ -229,19 +245,26 @@ class ResearchesPage(Page):
     base_form_class = researchersPageWagtailForm
 
     departments = [
-        "",
         "Architecture",
         "Chemical Engineering",
         "Civil Engineering",
-        "Computer Science",
-        "Electrical Engineering",
-        "Environmental Engineering",
-        "Industrial Engineering",
-        "Materials Science",
+        "Chemistry",
+        "Computer Applications",
+        "Computer Science and Engineering",
+        "Electrical and Electronics Engineering",
+        "Electronics and Communication Engineering",
+        "Humanities and Social Sciences",
+        "Instrumentation and Control Engineering",
         "Mechanical Engineering",
-        "Nuclear Engineering",
+        "Metallurgical and Materials Engineering",
         "Physics",
+        "Production Engineering",
+        "Management Studies",
+        "Mathematics",
+        "Energy and Environment",
+        "CECASE",
     ]
+
 
     def get_context(self, request):
         context = super().get_context(request)

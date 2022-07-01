@@ -49,6 +49,9 @@ class IMAPAuthentication(ModelBackend):
         except UserModel.DoesNotExist:
             try:
                 if username[0] == "4" and len(username) == 9:
+
+                    department = departments[int(username[1:3]) - 1]
+
                     user = UserModel.objects.create_user(
                         username=username, password=None
                     )
@@ -67,7 +70,7 @@ class IMAPAuthentication(ModelBackend):
                         title=username,
                         owner=user,
                         bio="Yet to be Filled",
-                        department="Architecture",
+                        department=department,
                         name=username,
                         email=username + "@nitt.edu",
                         phone_number="",
@@ -91,6 +94,13 @@ class IMAPAuthentication(ModelBackend):
                     for permission_type in ["add", "edit", "publish"]:
                         GroupPagePermission.objects.create(
                             group=group, page=page, permission_type=permission_type
+                        )
+
+                    for permission in ["add_image", "change_image", "view_image"]:
+                        GroupCollectionPermission.objects.create(
+                            group=group,
+                            collection=Collection.objects.filter(name="Root").first(),
+                            permission=Permission.objects.get(codename=permission),
                         )
 
                     user.save()

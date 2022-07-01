@@ -5,6 +5,7 @@ from researchers.models import SeminarAndViva
 
 
 class SeminarPage(Page):
+    max_count = 1
     parent_page_types = ["home.HomePage"]
 
     template = "seminar/seminar_page.html"

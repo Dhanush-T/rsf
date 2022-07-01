@@ -1,4 +1,5 @@
 from django.db import models
+import math
 
 from modelcluster.fields import ParentalKey
 
@@ -60,7 +61,18 @@ class HomePage(Page):
 
     about = RichTextField(blank=False, null=True)
 
+    side_heading = models.CharField(max_length=255, blank=False, null=True)
+
+    side_text = RichTextField(blank=False, null=True)
+
     content_panels = Page.content_panels + [
+        MultiFieldPanel(
+            [
+                FieldPanel("side_heading"),
+                FieldPanel("side_text"),
+            ],
+            heading="Left Side Content",
+        ),
         MultiFieldPanel(
             [
                 InlinePanel("carousel_images", min_num=1, label="Image"),
@@ -81,3 +93,26 @@ class HomePage(Page):
         ),
         FieldPanel("about"),
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        all_news = (
+            News.objects.filter()
+        )
+        context["news"] = all_news
+        context["newsPageCount"] = range(all_news.count())
+
+        
+        all_events = (
+            Events.objects.filter().order_by("-date_time")
+        )
+        context["events"] = all_events
+        events_count = all_events.count()
+        context["eventsPageCount"] = range(math.ceil(events_count / 4))
+        events_rem_count = 0
+        if events_count % 4 != 0:
+            events_rem_count = math.ceil(4 - events_count % 4)
+        context["eventsPageCountRem"] = range(events_rem_count)
+
+        return context

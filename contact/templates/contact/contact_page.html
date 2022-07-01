@@ -1,8 +1,25 @@
 {% extends 'base.html' %} {% load wagtailcore_tags %} {% load wagtailimages_tags %} {% block content %}
 <style>
-  body {
-    color: #fff;
+  .map_sec {
+    padding: 50px 0px;
   }
+  .map_inner h4,
+  .map_inner p {
+    color: #000;
+    text-align: center;
+  }
+  .map_inner p {
+    font-size: 13px;
+  }
+  .map_bind {
+    margin: auto;
+    border-radius: 30px;
+    overflow: hidden;
+    width: 400px;
+    height: 400px;
+    box-shadow: 0 20px 35px -5px #6e3df6;
+  }
+
   .right_conatct_social_icon {
     background: #6e3df6;
   }
@@ -204,20 +221,41 @@
   </div>
 </section>
 
-{% if self.maps_image %}
 <section class="map_sec">
   <div class="container">
     <div class="row">
       <div class="col-md-10 offset-md-1">
         <div class="map_inner">
           <h4>Find Us on Google Map</h4>
-          <div class="map_bind text-center">
-            {% image self.maps_image original as img %}
-            <img src="{{img.url}}" alt="" class="img-fluid" />
-          </div>
+          <div class="map_bind" id="map"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-{% endif %} {% endblock %}
+
+{% endblock %} {% block extra_js %}
+<script>
+  function initMap() {
+    const uluru = {
+      lat: parseFloat("{{self.latitude}}"),
+      lng: parseFloat("{{self.longitude}}"),
+    };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: uluru,
+    });
+    const marker = new google.maps.Marker({
+      position: uluru,
+      map: map,
+    });
+  }
+
+  window.initMap = initMap;
+</script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4HzSjPjRNoG-qidQAbBqnFI1Fq47Hbik&callback=initMap"
+  defer
+></script>
+
+{% endblock %}

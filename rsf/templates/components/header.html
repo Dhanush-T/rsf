@@ -9,11 +9,11 @@
   </div>
   <img style="width: 100px" src="https://test.delta.nitt.edu/static/images/logo.589f867513b0.png">
 </div> -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-b">
+<nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-b">
   <div class="container-fluid">
     <a class="navbar-brand d-flex" href="#">
       <img src="{% static 'images/logo.png' %}" class="img-fluid"/>
-      <div class="text-center p-3" id="brand">
+      <div class="text-center p-3 text-danger" style="text-shadow: 0 0 10px #00000088;" id="brand">
         <b>Research Scholar Forum</b> <br/>
         <small>NIT-Tiruchirappalli</small>
       </div>
@@ -30,7 +30,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <ul class="navbar-nav m-auto">
+      <ul class="navbar-nav m-auto my-2">
         <li class="nav-item">
           <a class="nav-link" id="nav-link" href="/">Home</a>
         </li>
@@ -53,7 +53,7 @@
           <a class="nav-link" id="nav-link" href="/contact-us">Contact Us</a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-danger"><a class="text-white" href="/admin">Login</a></button>
+          <a class="nav-link" id="nav-link" style="color: #f63d3d !important; border-bottom: 2px solid #f63d3d;" href="/admin">Login</a>
         </li>
       </ul>
     </div>

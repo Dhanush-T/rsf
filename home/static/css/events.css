@@ -16,20 +16,32 @@
     margin: 2rem 0;
 }
 
-.events .box .cardBody {
+.events .box .cardBody .card-part {
     display: flex;
     align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px -5px #6e3df6;
+    width: fit-content;
+    margin: auto;
+    padding: 10px 30px;
 }
 
-.events .box .cardBody .cardDates {
+.events .box .cardBody .card-part .cardDates {
     margin-right: 1.2rem;
 }
 
-.events .box .cardBody .cardDetails .dateTime span:first-of-type {
+.events .box .cardBody .card-part .cardDetails{
+    border-left: 1px solid #e0e0e0;
+    padding-left: 1rem;
+}
+
+.events .box .cardBody .card-part .cardDetails .dateTime span:first-of-type {
     margin-right: 5px;
 }
 
-.events .box .cardBody .month {
+.events .box .cardBody .card-part .month {
     font-family: Montserrat;
     text-transform: uppercase;
     font-weight: 500;
@@ -38,15 +50,16 @@
     text-align: center;
 }
 
-.events .box .cardBody .dateNumber {
+.events .box .cardBody .card-part .dateNumber {
     font-family: Montserrat;
     font-weight: bold;
     font-size: 4.3rem;
+    border-top: 1px solid #e0e0e0;
 
     color: #000000;
 }
 
-.events .box .cardBody .title {
+.events .box .cardBody .card-part .title {
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
@@ -58,7 +71,7 @@
     color: var(--brown);
 }
 
-.events .box .cardBody .venue {
+.events .box .cardBody .card-part .venue {
     font-family: Poppins;
     font-style: normal;
     text-transform: uppercase;
@@ -70,7 +83,7 @@
     color: rgba(150, 43, 7, 0.6);
 }
 
-.events .box .cardBody .dateTime {
+.events .box .cardBody .card-part .dateTime {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;

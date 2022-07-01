@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     "search",
     "events",
     "researchers",
-    "news",
     "team",
     "seminar",
     "globalPage",
@@ -181,3 +180,5 @@ WAGTAILUSERS_PASSWORD_REQUIRED = False
 WAGTAILUSERS_PASSWORD_ENABLED = False
 
 WAGTAIL_PASSWORD_RESET_ENABLED = False
+
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io', 'http://localhost:8000']

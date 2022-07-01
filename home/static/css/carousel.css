@@ -4,3 +4,8 @@
     max-height: 70vh;
     width: 60%;
 }
+
+#ci {
+    width: unset !important;
+    transform: translateX(-22.5%);
+}

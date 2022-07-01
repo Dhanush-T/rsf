@@ -13,6 +13,8 @@ from wagtail.admin.panels import PageChooserPanel
 
 class TeamPage(Page):
 
+    max_count = 1
+
     parent_page_types = ["home.HomePage"]
 
     content_panels = Page.content_panels + [

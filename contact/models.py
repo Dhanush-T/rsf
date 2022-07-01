@@ -29,6 +29,8 @@ class ContactPage(AbstractEmailForm):
     # If ignored, Wagtail adds _landing.html to your template name
     landing_page_template = "contact/contact_page.html"
 
+    max_count = 1
+
     phone_number = models.CharField(max_length=20, blank=True)
     email = models.EmailField(max_length=254, blank=True)
     address = models.CharField(max_length=255, blank=True)
@@ -37,13 +39,9 @@ class ContactPage(AbstractEmailForm):
     twitter_url = models.URLField(blank=True)
     instagram_url = models.URLField(blank=True)
 
-    maps_image = models.ForeignKey(
-        "wagtailimages.Image",
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, default=0.0)
+
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, default=0.0)
 
     content_panels = AbstractEmailForm.content_panels + [
         MultiFieldPanel(
@@ -62,7 +60,13 @@ class ContactPage(AbstractEmailForm):
             ],
             heading="Social Media",
         ),
-        ImageChooserPanel("maps_image"),
+        MultiFieldPanel(
+            [
+                FieldPanel("latitude"),
+                FieldPanel("longitude"),
+            ],
+            heading="Map",
+        ),
         InlinePanel("form_fields", label="Form Fields"),
         MultiFieldPanel(
             [

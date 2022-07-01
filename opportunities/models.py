@@ -8,6 +8,7 @@ from modelcluster.fields import ParentalKey
 
 
 class OpportunitiesPage(Page):
+    max_count = 1
     parent_page_types = ["home.HomePage"]
 
     content_panels = Page.content_panels + [

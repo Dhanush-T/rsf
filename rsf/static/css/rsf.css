@@ -1,6 +1,11 @@
 body {
   background-color: #f0f0f0;
   animation: fadein 1.5s ease-in-out;
+  overflow-x: hidden;
+}
+
+.canvas {
+  position: fixed;
 }
 
 @keyframes fadein {
@@ -36,8 +41,9 @@ body {
 }
 
 #nav-link {
-  /* color: rgb(255 255 255 / 54.8%) !important; */
+  text-shadow: 0 0 10px #00000088;
   padding-bottom: 5px;
+  font-weight: bolder;
 }
 
 #nav-link:hover {
@@ -47,7 +53,7 @@ body {
 
 .navbar {
   margin: auto;
-  background:  transparent;
+  background: transparent;
   transition: all 0.7s ease-in-out;
 
   padding-top: 15px;
@@ -139,7 +145,8 @@ a {
   padding-bottom: 0px;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(20px) saturate(160%) contrast(45%) brightness(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%) contrast(45%) brightness(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%) contrast(45%)
+    brightness(140%);
 }
 
 .sticky .navbar-brand img {
@@ -154,11 +161,92 @@ a {
   transition: all 0.7s ease-in-out;
 }
 
-#brand{
+#brand {
+  transition: all 0.7s ease-in-out;
+  font-family: "Lobster", cursive;
+}
+
+.sticky #brand {
+  display: none;
   transition: all 0.7s ease-in-out;
 }
 
-.sticky #brand{
-  display: none;
-  transition: all 0.7s ease-in-out;
+svg {
+  transition: fill 0.3s ease-out;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: translateZ(0px);
+}
+
+svg.green {
+  fill: #3df653;
+}
+
+svg.red {
+  fill: #f63d3d;
+}
+
+svg.gold {
+  fill: #fcd000;
+}
+
+.social-menu ul{
+  position: fixed;
+  top: 90%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.social-menu ul li{
+  list-style: none;
+  margin: 0 15px;
+}
+
+.social-menu ul li .fab{
+  font-size: 30px;
+  line-height: 60px;
+  transition: .3s;
+  color: #000;
+}
+
+.social-menu ul li .fab:hover{
+  color: #fff;
+}
+
+.social-menu ul li a{
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+  transition: .6s;
+  box-shadow: 0 5px 4px rgba(0,0,0,.5);
+}
+
+.social-menu ul li a:hover{
+  transform: translate(0, -10%);
+}
+
+.social-menu ul li:nth-child(1) a:hover{
+  background-color: rgba(0, 0, 0, 0.829);
+}
+.social-menu ul li:nth-child(2) a:hover{
+  background-color: #E4405F;
+}
+.social-menu ul li:nth-child(3) a:hover{
+  background-color: #0077b5;
+}
+.social-menu ul li:nth-child(4) a:hover{
+  background-color: #000;
+}
+
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

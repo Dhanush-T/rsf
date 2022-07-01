@@ -10,6 +10,8 @@ from modelcluster.fields import ParentalKey
 class EventsPage(Page):
     parent_page_types = ["home.HomePage"]
 
+    max_count = 1
+
     content_panels = Page.content_panels + [
         MultiFieldPanel([InlinePanel("events", label="Event")], heading="Events")
     ]
