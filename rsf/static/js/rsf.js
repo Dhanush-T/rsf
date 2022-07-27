@@ -5,6 +5,9 @@ window.onscroll = function () {
 
 window.onload = function () {
   window.scrollTo(0, 0);
+  if (document.body.offsetHeight < window.innerHeight) {
+    document.getElementsByTagName("footer")[0].classList.add("footer-fixed");
+  }
 };
 
 const heart =
@@ -19,8 +22,8 @@ const cloud =
 
 const comp =
   '<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns1="http://sozi.baierouge.fr" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg12067" viewBox="0 0 1000.2 782.97" version="1.1"><g id="layer1" transform="translate(125.1 -140.88)">  <path id="rect5467" fill="#5a5b5b" d="m-83.425 140.88c-23.088 0-41.675 18.587-41.675 41.675v583.45c0 23.088 18.587 41.675 41.675 41.675h250.05v66.159h-108.35c-9.2352 0-16.67 7.4348-16.67 16.67v16.67c0 9.2351 7.4348 16.67 16.67 16.67h633.46c9.2352 0 16.67-7.4349 16.67-16.67v-16.67c0-9.2352-7.4348-16.67-16.67-16.67h-108.35v-66.159h250.05c23.088 0 41.675-18.587 41.675-41.675v-583.45c0-23.088-18.587-41.675-41.675-41.675h-916.85zm41.675 83.35h833.5v500.1h-833.5v-500.1z"/></g></svg>';
-  
-const data = [ star, cloud, comp, heart];
+
+const data = [comp];
 
 const max = 10;
 
@@ -39,8 +42,9 @@ class Ball {
     this.h = $(window).height();
     this.x = Math.random() * this.w;
     this.y = Math.random() * this.h;
-    $(this.shape).toggleClass(colors[Math.floor(Math.random() * colors.length)]);
-    
+    $(this.shape).toggleClass(
+      colors[Math.floor(Math.random() * colors.length)]
+    );
 
     $(window).on("resize", this.resize.bind(this));
     this.render();
@@ -94,9 +98,3 @@ function update() {
   requestAnimationFrame(update.bind(this));
 }
 update();
-
-window.onload = function () {
-  if(document.body.offsetHeight < window.innerHeight) {
-    document.getElementsByTagName('footer')[0].classList.add('footer-fixed');
-  }
-}

@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  rsf_site_nginx:
+    image: nginx:latest
+    container_name: rsf_site_ngnix
+    restart: unless-stopped
+    ports:
+      - "${EXTERNAL_PORT}:8000"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./media:/media
+    depends_on:
+      - rsf_site
+
+  rsf_site:
+    image: rsf_site
+    container_name: rsf_site
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./media:/app/media
+      - ./static:/app/static
+    depends_on:
+      - rsf_db
+    env_file:
+      - .env
+
+  rsf_db:
+    container_name: rsf_db
+    image: postgres
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - "./db/postgres_data:/var/lib/postgresql/data"

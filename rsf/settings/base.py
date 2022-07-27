@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-
+X_FRAME_OPTIONS = "ALLOW-FROM *"
 # Application definition
 
 INSTALLED_APPS = [
@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "researchers",
     "team",
     "seminar",
+    "snippets",
     "globalPage",
     "adminPage",
     "opportunities",
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -181,4 +183,4 @@ WAGTAILUSERS_PASSWORD_ENABLED = False
 
 WAGTAIL_PASSWORD_RESET_ENABLED = False
 
-CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io', 'http://localhost:8000']
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok.io', 'http://localhost:8000', 'http://localhost:25688']

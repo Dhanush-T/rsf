@@ -3,9 +3,7 @@ from django.templatetags.static import static
 
 from wagtail.core import hooks
 from django.contrib import admin
-from django.contrib.auth.models import Permission
-from wagtail.models import GroupCollectionPermission, Collection
-from researchers.models import ResearchesPage
+from researchers.models import ResearchesPage, ResearcherPage
 
 
 @hooks.register("insert_global_admin_css")
@@ -14,3 +12,4 @@ def global_admin_css():
 
 
 admin.site.register(ResearchesPage)
+admin.site.register(ResearcherPage)

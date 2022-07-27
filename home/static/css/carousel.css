@@ -9,3 +9,8 @@
     width: unset !important;
     transform: translateX(-22.5%);
 }
+
+.carousel-inner {
+    border-radius: 10px;
+    box-shadow: 0 20px 35px
+}

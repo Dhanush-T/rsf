@@ -1,4 +1,4 @@
-{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load menu_tags %}
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load menu_tags %} 
 
 <section class="section-team">
   <div class="container">
@@ -29,16 +29,16 @@
     <div id="depts">
       {% for department in departments %}
       <div class="three">
-        <h1 id="{{department}}">{{department}}</h1>
+        <h1 id="scroll-{{department|first_word}}">{{department}}</h1>
       </div>
 
       <div class="row justify-content-center">
         {% for page in self.get_children.specific %} {% if page.department == department %}
         <div
-          class="col-sm-6 col-lg-4 col-xl-3"
+          class="col-sm-6 col-lg-3 col-xl-2"
           onclick="window.location.href='{{ page.url }}'"
         >
-          <div class="single-person" id="{{page.name}}">
+          <div class="single-person" id="scroll-{{page.name|first_word}}">
             <div class="person-image">
               {% image page.image fill-200x200 as img %}
               <img src="{{ img.url }}" alt="..." />
@@ -79,7 +79,8 @@
     }
     suggestions.innerHTML = "";
     result.forEach(dept => {
-      suggestions.innerHTML += `<li onclick="window.location.href='/researcher/#${dept}'">${dept}</li>`;
+      d = dept.split(" ")[0];
+      suggestions.innerHTML += `<li onclick="keep('#scroll-${d}')">${dept}</li>`;
     });
     if(search.length > 0 && result.length == 0) {
       suggestions.innerHTML = `<li>No Results Found</li>`

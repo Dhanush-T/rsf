@@ -1,19 +1,12 @@
 {% load static %}
+{% load menu_tags %}
+{% get_nav_menu as nav_menu%}
 
-<!-- <div id="top3" class="d-flex justify-content-center">
-  <img src="{% static 'images/logo.png' %}" style="width: 100px; m-auto" />
-  <div class="text-center fw-bold fs-4 mx-5">
-    Research Scholar Forum <br />
-    NIT-Tiruchirappalli<br />
-    RSFNITT
-  </div>
-  <img style="width: 100px" src="https://test.delta.nitt.edu/static/images/logo.589f867513b0.png">
-</div> -->
 <nav class="navbar navbar-expand-xl navbar-light fixed-top navbar-b">
   <div class="container-fluid">
     <a class="navbar-brand d-flex" href="#">
       <img src="{% static 'images/logo.png' %}" class="img-fluid"/>
-      <div class="text-center p-3 text-danger" style="text-shadow: 0 0 10px #00000088;" id="brand">
+      <div class="text-center ps-3 text-danger" style="font-size: 30px"id="brand">
         <b>Research Scholar Forum</b> <br/>
         <small>NIT-Tiruchirappalli</small>
       </div>
@@ -31,27 +24,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <ul class="navbar-nav m-auto my-2">
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/event">Events</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/opportunities">Oppurtunities</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/seminars">Seminar Talk & Viva Voice</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/team">Our Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/researcher">Researchers</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="nav-link" href="/contact-us">Contact Us</a>
-        </li>
+        {% for item in nav_menu %}
+          <li class="nav-item">
+            <a class="nav-link" id="nav-link" href="{%if item.nav_page%}{{item.nav_page.url}}{%else%}{{item.link_url}}{%endif%}">{{ item.nav_name }}</a>
+          </li>
+        {% endfor %}
         <li class="nav-item">
           <a class="nav-link" id="nav-link" style="color: #f63d3d !important; border-bottom: 2px solid #f63d3d;" href="/admin">Login</a>
         </li>

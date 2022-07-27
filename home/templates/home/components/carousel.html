@@ -8,7 +8,7 @@
             {% for loop_cycle in self.carousel_images.all %}
             {% image loop_cycle.carousel_image fill-1920x837 as img %}
 
-            <div class="carousel-item {% if forloop.first %}active{% endif %} " id="ci">
+            <div class="carousel-item {% if forloop.first %}active{% endif %} ">
                 <img src="{{ img.url }}" alt="{{ img.alt }}" class="d-block w-100" />
                 <div class="carousel-caption d-none d-md-block">
                     <h4>{{ loop_cycle.heading }}</h4>

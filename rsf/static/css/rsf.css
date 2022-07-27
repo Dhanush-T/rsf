@@ -19,7 +19,7 @@ body {
 }
 
 .footer-inner {
-  background-color: #6e3df6;
+  background-color: #022c56;
   display: table;
   width: 100%;
   color: #fff;
@@ -41,14 +41,15 @@ body {
 }
 
 #nav-link {
-  text-shadow: 0 0 10px #00000088;
+  /* text-shadow: 0 0 10px #00000088; */
   padding-bottom: 5px;
   font-weight: bolder;
+  white-space: nowrap;
 }
 
 #nav-link:hover {
   margin-bottom: -5px;
-  border-bottom: 2px solid #6e3df6;
+  border-bottom: 2px solid #022c56;
 }
 
 .navbar {
@@ -60,7 +61,7 @@ body {
   padding-bottom: 15px;
 
   backdrop-filter: blur(1px);
-  box-shadow: 0px 5px 5px #6e3df6;
+  box-shadow: 0px 5px 5px #022c56;
 }
 
 /* scroll bar */
@@ -74,14 +75,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #6e3df6;
+  background-color: #022c56;
 }
 
 #table-cover {
   padding: 30px;
   background-color: white;
   margin: 20px;
-  box-shadow: 0 10px 15px -5px #6e3df6;
+  box-shadow: 0 10px 15px -5px #022c56;
   border-radius: 10px;
   animation: loadProfile 1s ease-in-out;
   animation-fill-mode: both;
@@ -108,12 +109,12 @@ body {
 }
 
 .nav-link.active {
-  background-color: #6e3df6 !important;
+  background-color: #022c56 !important;
   color: #fff !important;
 }
 
 .nav-link {
-  color: #6e3df6 !important;
+  color: #022c56 !important;
 }
 
 a {
@@ -122,9 +123,9 @@ a {
 
 .display-3 {
   margin-top: 10px;
-  font-family: "Lobster", cursive;
-  color: #6e3df6;
-  text-shadow: 0 0 10px #00000088;
+  
+  color: #022c56;
+  /* text-shadow: 0 0 10px #00000088; */
   animation: loadHead 1.5s ease-in-out;
 }
 
@@ -163,7 +164,7 @@ a {
 
 #brand {
   transition: all 0.7s ease-in-out;
-  font-family: "Lobster", cursive;
+  
 }
 
 .sticky #brand {
@@ -230,19 +231,8 @@ svg.gold {
 
 .social-menu ul li a:hover{
   transform: translate(0, -10%);
-}
-
-.social-menu ul li:nth-child(1) a:hover{
   background-color: rgba(0, 0, 0, 0.829);
-}
-.social-menu ul li:nth-child(2) a:hover{
-  background-color: #E4405F;
-}
-.social-menu ul li:nth-child(3) a:hover{
-  background-color: #0077b5;
-}
-.social-menu ul li:nth-child(4) a:hover{
-  background-color: #000;
+  color: #000;
 }
 
 .footer-fixed {

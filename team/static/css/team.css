@@ -2,7 +2,7 @@
   cursor: pointer;
   border-radius: 20px;
   min-height: 100%;
-  box-shadow: 0 30px 50px -20px #6e3df6;
+  box-shadow: 0 30px 50px -20px #022c56;
   animation: loadProfile 1.6s ease-in-out;
 }
 
@@ -17,7 +17,7 @@
   top: -60px;
   right: 10%;
   background: #f8f9fa !important;
-  box-shadow: 0 30px 50px -20px #6e3df6;
+  box-shadow: 10px 0px 50px -10px #022c56;
   padding: 10px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .social button a i {
-  color: #6e3df6;
+  color: #022c56;
 }
 
 @keyframes loadProfile {

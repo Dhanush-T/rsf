@@ -8,12 +8,12 @@
   padding: 30px;
   background-color: #f6f9ff;
   border-radius: 5px;
-  box-shadow: 0 30px 50px -20px #6e3df6;
+  box-shadow: 0 30px 50px -20px #ccc;
   animation: loadProfile ease-in-out 1.5s;
 }
 
 .section-team .single-person:hover {
-  background: linear-gradient(to right, #6e3df6, #ccc);
+  background: linear-gradient(to right, #ccc, #fff);
   cursor: pointer;
 }
 
@@ -45,7 +45,7 @@
   height: 60px;
   line-height: 60px;
   text-align: center;
-  background: linear-gradient(to right, #6e3df6, #ccc);
+  background: linear-gradient(to right, #022c56, #ccc);
   color: #fff;
   border-radius: 50%;
   font-size: 24px;
@@ -54,11 +54,11 @@
 .section-team .single-person:hover .person-image .icon {
   background: none;
   background-color: #fff;
-  color: #6e3df6;
+  color: #022c56;
 }
 
 .section-team .single-person:hover .person-image .icon:hover {
-  background: linear-gradient(to right, #6e3df6, #ccc);
+  background: linear-gradient(to right, #022c56, #ccc);
   background-color: none;
   color: #fff;
 }
@@ -72,16 +72,16 @@
 .section-team .single-person .person-info .speciality {
   text-transform: uppercase;
   font-size: 14px;
-  color: #6e3df6;
+  color: #022c56;
 }
 
-.section-team .single-person:hover .full-name,
+/* .section-team .single-person:hover .full-name,
 .section-team .single-person:hover .speciality {
   color: #fff;
-}
+} */
 
 .section-team a {
-  color: #6e3df6;
+  color: #022c56;
   text-decoration: none;
 }
 
@@ -117,12 +117,12 @@
 
 .input-text:focus {
   box-shadow: 0px 0px 0px;
-  border-color: #6e3df6;
+  border-color: #022c56;
   outline: 0px;
 }
 
 .form-control {
-  border: 1px solid #6e3df6;
+  border: 1px solid #022c56;
 }
 
 .suggestions {
@@ -157,7 +157,7 @@ span.population {
 
 .three h1 {
   text-shadow: 0px 0px 10px #00000088;
-  color: #6e3df6;
+  color: #022c56;
   font-size: 28px;
   font-weight: 500;
   letter-spacing: 0;
@@ -173,7 +173,7 @@ span.population {
   bottom: 0;
   height: 5px;
   width: 55px;
-  background-color: #6e3df6;
+  background-color: #022c56;
 }
 
 .three h1:after {
@@ -184,5 +184,5 @@ span.population {
   height: 1px;
   width: 95%;
   max-width: 255px;
-  background-color: #6e3df6;
+  background-color: #022c56;
 }

@@ -1,23 +1,21 @@
 :root{
-  --brown: #6e3df6;
+  --brown: #022c56;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Montserrat:wght@700&family=Nosifer&family=Oswald:wght@400;600&family=Roboto:wght@100;300&family=Rubik+Glitch&display=swap");
+
+.ct{
+  clip-path: polygon(0 0, 100% 0%, 100% 10%, 10% 100%, 0% 100%);
+}
 
 .main {
   margin: 0;
   justify-content: center;
   height: 45rem;
-  background-color: #6e3df6; /* For browsers that do not support gradients */
-  background-image: linear-gradient(
-    170deg,
-    #6e3df6 0%,
-    #6e3df6 60%,
-    #f0f0f0 60.1%
-  );
 }
+
 .rightimage {
-  width: 50%;
+  width: 60%;
   padding: 40px;
   display: flex;
   float: right;
@@ -28,7 +26,7 @@
 }
 
 .lefttext {
-  width: 50%;
+  width: 35%;
   height: 70%;
   margin:auto;
   justify-content: center;
@@ -42,13 +40,13 @@
   width: 100%;
   justify-content: center;
   text-align: center;
+  z-index: 1;
 }
 
 .lefttext .textwrap h1 {
   width: 100%;
   overflow-wrap: break-word;
   font-size: 50px;
-  font-family: "Lobster", cursive;
   padding: 0;
   color: #f0f0f0;
   justify-content: center;
@@ -85,5 +83,9 @@
     display: flex;
     width: 100%;
     margin-top: 0;
+  }
+
+  .ct{
+    clip-path: none;
   }
 }

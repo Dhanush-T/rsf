@@ -1,7 +1,14 @@
+{% load menu_tags %}
+{% get_social_menu as social_icons%}
+
 <div class="social-menu">
     <ul>
-        <li><a href="https://github.com/sanketbodke" target="blank"><i class="fab fa-github"></i></i></a></li>
-        <li><a href="https://www.instagram.com/imsanketbodke/" target="blank"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/sanket-bodake-995b5b205/" target="blank"><i class="fab fa-linkedin-in"></i></a></li>
+        {% for icon in social_icons %}
+            <li>
+                <a href="{{ icon.link_url }}" target="_blank">
+                    <i class="{{ icon.icon_font_awesome_class_name }}"></i>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </div>

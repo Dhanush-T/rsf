@@ -1,11 +1,11 @@
 :root {
-    --color-primary: #6e3df6;
+    --color-primary: #022c56;
     --color-primary-darker: #333;
-    --color-primary-dark: #6e3df6;
-    --color-primary-lighter: #6e3df6;
-    --color-primary-light: #6e3df6;
+    --color-primary-dark: #022c56;
+    --color-primary-lighter: #022c56;
+    --color-primary-light: #022c56;
     --color-input-focus: #fefefe;
-    --color-input-focus-border: #6e3df6;
+    --color-input-focus-border: #022c56;
     
 }
 
