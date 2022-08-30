@@ -23,12 +23,25 @@ class SeminarPage(Page):
                 date__gte=datetime.date.today(), type="Seminar"
             ).order_by("-date")
 
+            if request.GET.get("department", None):
+                department = request.GET.get("department", None)
+                seminar_after_today = seminar_after_today.filter(
+                    department=department
+                )
+
             context["seminar_after_today"] = seminar_after_today
 
             viva_voice_after_today = SeminarAndViva.objects.filter(
                 date__gte=datetime.date.today(), type="Viva Voice"
             ).order_by("-date")
 
+            if request.GET.get("department", None):
+                department = request.GET.get("department", None)
+                viva_voice_after_today = viva_voice_after_today.filter(
+                    department=department
+                )
+
             context["viva_voice_after_today"] = viva_voice_after_today
 
         return context
+

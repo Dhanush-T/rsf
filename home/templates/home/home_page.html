@@ -20,10 +20,11 @@
     <div class="display-3">About Us</div>
   </div>
 </div>
-<div class="container">{{self.about | richtext}}</div>
+<div class="container card p-5 special-card">{{self.about | richtext}}</div>
 
-{% include "home/components/news.html" %} 
+
 {% include "home/components/events.html" %} 
+{% include "home/components/news.html" %} 
 {% endblock content %} 
 
 {% block extra_js %}

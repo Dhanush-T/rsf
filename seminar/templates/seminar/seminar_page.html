@@ -1,8 +1,90 @@
-{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load static %} {% block content %}
-<div class="container">
+{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} 
+{% load static %} {% load menu_tags %} {% block content %}
+<style>
+  .suggestions {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .suggestions li {
+    background: white;
+    list-style: none;
+    border-bottom: 1px solid #d8d8d8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    margin: 0;
+    padding: 20px;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+
+  span.population {
+    font-size: 15px;
+  }
+
+  .three {
+    margin-top: 20px;
+    animation: loadTop 1.6s ease-in-out 0.5s;
+    animation-fill-mode: both;
+  }
+
+  .three h1 {
+    text-shadow: 0px 0px 10px #00000088;
+    color: #022c56;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.5em;
+    padding-bottom: 15px;
+    position: relative;
+  }
+
+  .three h1:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 55px;
+    background-color: #022c56;
+  }
+
+  .three h1:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    height: 1px;
+    width: 95%;
+    max-width: 255px;
+    background-color: #022c56;
+  }
+</style>
+<div class="container mb-5">
   <div class="row pb-4">
     <div class="col-12 text-center">
       <div class="display-3">Seminar and Viva-Voce</div>
+    </div>
+  </div>
+  <div class="container justify-content-center" id="search-bar">
+    <div class="row justify-content-end">
+      <div class="col-md-4">
+        <div class="input-group">
+          <input
+            type="text"
+            id="search"
+            class="form-control input-text"
+            placeholder="Search Department"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+            autocomplete="off"
+          />
+        </div>
+        <ul class="suggestions"></ul>
+      </div>
     </div>
   </div>
   <ul class="nav nav-pills nav-fill mt-3" id="pills-tab" role="tablist">
@@ -35,35 +117,36 @@
       </button>
     </li>
   </ul>
-  <div class="tab-content" id="pills-tabContent">
+  <div class="tab-content mb-5" id="pills-tabContent">
     <div
       class="tab-pane fade show active table-responsive"
       id="pills-upcoming"
       role="tabpanel"
-      style="overflow-y: hidden;"
+      style="overflow-y: hidden"
       aria-labelledby="pills-upcoming-tab"
     >
       <div id="table-cover">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Scholar</th>
-              <th scope="col">Department</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Venue</th>
+              <th scope="col" style="width: 40%">Title</th>
+              <th scope="col" style="width: 20%">Scholar</th>
+              <th scope="col" style="width: 10%">Department</th>
+              <th scope="col" style="width: 10%">Date Time</th>
+              <th scope="col" style="width: 20%">Venue</th>
             </tr>
           </thead>
           <tbody>
             {% for seminar in seminar_after_today %}
             <tr>
-              <td>{{ seminar.title }}</td>
-              <td>{{ seminar.speaker }}</td>
-              <td>{{ seminar.department }}</td>
-              <td>{{ seminar.date }}</td>
-              <td>{{ seminar.time }}</td>
-              <td>{{ seminar.venue }}</td>
+              <td style="width: 40%">{{ seminar.title }}</td>
+              <td style="width: 20%">{{ seminar.speaker }}</td>
+              <td style="width: 10%">{{ seminar.department | dept_short }}</td>
+              <td style="width: 10%">
+                {{ seminar.time }} <br />
+                {{ seminar.date }}
+              </td>
+              <td style="width: 20%">{{ seminar.venue }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -74,30 +157,31 @@
       class="tab-pane fade table-responsive"
       id="pills-past"
       role="tabpanel"
-      style="overflow-y: hidden;"
+      style="overflow-y: hidden"
       aria-labelledby="pills-past-tab"
     >
       <div id="table-cover">
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Scholar</th>
-              <th scope="col">Department</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Venue</th>
+              <th scope="col" style="width: 40%">Title</th>
+              <th scope="col" style="width: 20%">Scholar</th>
+              <th scope="col" style="width: 10%">Department</th>
+              <th scope="col" style="width: 10%">Date Time</th>
+              <th scope="col" style="width: 20%">Venue</th>
             </tr>
           </thead>
           <tbody>
             {% for seminar in viva_voice_after_today %}
             <tr>
-              <td>{{ seminar.title }}</td>
-              <td>{{ seminar.speaker }}</td>
-              <td>{{ seminar.department }}</td>
-              <td>{{ seminar.date }}</td>
-              <td>{{ seminar.time }}</td>
-              <td>{{ seminar.venue }}</td>
+              <td style="width: 40%">{{ seminar.title }}</td>
+              <td style="width: 20%">{{ seminar.speaker }}</td>
+              <td style="width: 10%">{{ seminar.department | dept_short }}</td>
+              <td style="width: 10%">
+                {{ seminar.time }} <br />
+                {{ seminar.date }}
+              </td>
+              <td style="width: 20%">{{ seminar.venue }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -106,5 +190,32 @@
     </div>
   </div>
 </div>
+<script>
+  let departments = []
+  {% for seminar in seminar_and_viva_voice %}
+  departments.push("{{seminar.department}}")
+  {% endfor %}
+  
+  // unique departments
+  departments = [...new Set(departments)]
+
+  let suggestions = document.querySelector(".suggestions")
+  document.getElementById("search").addEventListener("keyup", (e) => {
+    let search = e.target.value
+    let result = [];
+    if (search.length > 0) {
+      result = departments.filter((department) => {
+        return department.toLowerCase().startsWith(search.toLowerCase())
+      })
+    }
+    suggestions.innerHTML = ""
+    result.forEach((department) => {
+      suggestions.innerHTML += `<li onclick="window.location.href='/seminars/?department=${department}'">${department}</li>`
+    })
+    if(search.length > 0 && result.length == 0) {
+      suggestions.innerHTML = `<li>No Results Found</li>`
+    }
+  })
+</script>
 
 {% endblock %}

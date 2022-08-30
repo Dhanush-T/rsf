@@ -15,28 +15,34 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Speaker</th>
-          <th scope="col">Venue</th>
-          <th scope="col">Date</th>
-          <th scope="col">Time</th>
-          <th scope="col">Details</th>
-          <th scope="col">Register</th>
+          <th scope="col" style="width: 40%;">Name</th>
+          <th scope="col" style="width: 20%;">Speaker</th>
+          <th scope="col" style="width: 10%;">Venue</th>
+          <th scope="col" style="width: 10%;">Date Time</th>
+          <th scope="col" style="width: 10%;">Details</th>
+          <th scope="col" style="width: 10%;">Register</th>
         </tr>
       </thead>
       <tbody>
         {% for event in events_after_today %}
         <tr>
-          <td>{{ event.name }}</td>
-          <td>{{ event.speaker }}</td>
-          <td>{{ event.venue }}</td>
-          <td>{{ event.date }}</td>
-          <td>{{ event.time }}</td>
-          <td>
+          <td style="width: 40%;">{{ event.name }}</td>
+          <td style="width: 20%;">{{ event.speaker }}</td>
+          <td style="width: 10%;">{{ event.venue }}</td>
+          <td style="width: 10%;">{{ event.time }} <br/>{{ event.date }} </td>
+          <td style="width: 10%;">
+              {% if event.details.url %}
               <a href="{{event.details.url}}">Check</a>
+              {% else %} 
+              - 
+              {% endif %}
           </td>
           <td>
+              {% if event.registeration_link %}
               <a href="{{event.registeration_link}}">Register</a>
+              {% else %}
+              -
+              {% endif %}
           </td>
         </tr>
         {% endfor %}

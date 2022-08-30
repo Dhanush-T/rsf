@@ -1,35 +1,36 @@
-{% load static %}
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/events.css' %}">
-{% endblock extra_css %}
+{% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/events.css' %}" />
+{% endblock extra_css %} 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <div id="testimonial-slider" class="owl-carousel">
-                <div class="testimonial">
-                    <div class="pic">
-                        <img src="https://static.pexels.com/photos/529928/pexels-photo-529928.jpeg" alt="" class="img-responsive">
-                    </div>
-                    <h3 class="testimonial-info">
-                        krystal
-                        <small>Web Developer</small>
-                    </h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi facilisis.</p>
-                </div>
-
-                <div class="testimonial">
-                    <div class="pic">
-                        <img src="http://www.markharwood.plus.com/images/people%20large/people8.jpg" alt="" class="img-responsive">
-                    </div>
-                    <h3 class="testimonial-info">
-                        Diana
-                        <small>Web Designer</small>
-                    </h3>
-                    <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi facilisis.</p>
-                </div>
+{% if self.events.all|length %}
+    <div class="circulars containTitle mb-5">
+        <div class="pb-4">
+            <div class="text-center">
+              <div class="display-3">Events</div>
             </div>
         </div>
+        
+        <div class="owl-carousel">
+        {% for item in self.events.all %}
+        <div class="card-container" style="margin: auto;">
+            <div class="photo-container">
+              <div class="date">
+                <div class="day">{{item.date_time|date:"d" }}</div>
+                <div class="month">{{item.date_time|date:"M" }}</div>
+              </div>
+              <div class="image"></div>
+            </div>
+            <div class="info-container">
+              <a class="event-name"  href="{{item.url}}">
+                {{item.title}}
+              </a>
+              <div class="event-location">
+                {{item.venue}}
+              </div>
+            </div>
+          </div>
+        {% endfor %}   
+        </div>
     </div>
-</div>
-{% endblock content %}
+    {% endif %}
+{% endblock content %} 

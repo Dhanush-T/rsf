@@ -1,4 +1,5 @@
-{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} {% load menu_tags %} 
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} 
+{% load menu_tags %} 
 
 <section class="section-team">
   <div class="container">
@@ -35,7 +36,8 @@
       <div class="row justify-content-center">
         {% for page in self.get_children.specific %} {% if page.department == department %}
         <div
-          class="col-sm-6 col-lg-3 col-xl-2"
+          class="col-sm-4 col-lg-3 col-xl-2"
+          style="max-width: 300px;"
           onclick="window.location.href='{{ page.url }}'"
         >
           <div class="single-person" id="scroll-{{page.name|first_word}}">

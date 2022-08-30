@@ -1,5 +1,8 @@
-{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags
-wagtailimages_tags %} {% load static %} {% block content %}
+{% extends "base.html" %} 
+{% load wagtailcore_tags wagtailimages_tags wagtailimages_tags %} 
+{% load static %}
+{% load menu_tags %} 
+{% block content %}
 <div class="container">
   <div class="row pb-4">
     <div class="col-12 text-center">
@@ -60,7 +63,7 @@ wagtailimages_tags %} {% load static %} {% block content %}
             <tr>
               <td>{{ opp.name }}</td>
               <td>{{ opp.institute }}</td>
-              <td>{{ opp.department }}</td>
+              <td>{{ opp.department | dept_short }}</td>
               <td>{{ opp.last_date }}</td>
               <td>
                 <a href="{{opp.more_details}}" target="_blank">Check here</a>
@@ -94,7 +97,7 @@ wagtailimages_tags %} {% load static %} {% block content %}
             <tr>
               <td>{{ opp.name }}</td>
               <td>{{ opp.institute }}</td>
-              <td>{{ opp.department }}</td>
+              <td>{{ opp.department | dept_short }}</td>
               <td>{{ opp.last_date }}</td>
               <td>
                 <a href="{{opp.more_details}}" target="_blank">Check here</a>

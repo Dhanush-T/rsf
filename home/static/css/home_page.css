@@ -89,3 +89,9 @@
     clip-path: none;
   }
 }
+
+.special-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 3px 4px #022c56;
+}

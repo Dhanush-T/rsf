@@ -34,7 +34,45 @@ class Opp(Orderable):
 
     name = models.CharField(max_length=255, blank=False, null=False)
     institute = models.CharField(max_length=255, blank=False, null=False)
-    department = models.CharField(max_length=255, blank=False, null=False)
+    department = models.CharField(
+        max_length=225,
+        blank=False,
+        null=False,
+        choices=(
+            ("Architecture", "Architecture"),
+            ("Chemical Engineering", "Chemical Engineering"),
+            ("Civil Engineering", "Civil Engineering"),
+            ("Chemistry", "Chemistry"),
+            ("Computer Applications", "Computer Applications"),
+            ("Computer Science and Engineering", "Computer Science and Engineering"),
+            (
+                "Electrical and Electronics Engineering",
+                "Electrical and Electronics Engineering",
+            ),
+            (
+                "Electronics and Communication Engineering",
+                "Electronics and Communication Engineering",
+            ),
+            ("Humanities and Social Sciences", "Humanities and Social Sciences"),
+            (
+                "Instrumentation and Control Engineering",
+                "Instrumentation and Control Engineering",
+            ),
+            ("Mechanical Engineering", "Mechanical Engineering"),
+            (
+                "Metallurgical and Materials Engineering",
+                "Metallurgical and Materials Engineering",
+            ),
+            ("Physics", "Physics"),
+            ("Production Engineering", "Production Engineering"),
+            ("Management Studies", "Management Studies"),
+            ("Mathematics", "Mathematics"),
+            ("Energy and Environment", "Energy and Environment"),
+            ("CECASE", "CECASE"),
+        ),
+        default="Professor",
+    )
+
     last_date = models.DateField(blank=False, null=False)
     more_details = models.URLField(max_length=255, blank=True, null=True)
 

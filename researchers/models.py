@@ -81,7 +81,7 @@ class ResearcherPage(Page):
         help_text="Link to Google Scholar profile",
     )
 
-    facebook_link = models.URLField(
+    orcid_link = models.URLField(
         max_length=225,
         blank=True,
         null=True,
@@ -123,7 +123,7 @@ class ResearcherPage(Page):
         MultiFieldPanel(
             [
                 FieldPanel("google_scholar_link"),
-                FieldPanel("facebook_link"),
+                FieldPanel("orcid_link"),
                 FieldPanel("linkedin_link"),
             ],
             heading="Social Links",
@@ -209,7 +209,6 @@ class SeminarAndViva(Orderable):
 
     panels = [
         FieldPanel("title"),
-        FieldPanel("department"),
         FieldPanel("type"),
         FieldPanel("date"),
         FieldPanel("time"),
@@ -218,6 +217,7 @@ class SeminarAndViva(Orderable):
 
     def save(self, *args, **kwargs):
         self.speaker = self.page.name
+        self.department = self.page.department
         super().save(*args, **kwargs)
 
 
