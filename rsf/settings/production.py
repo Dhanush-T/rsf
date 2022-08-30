@@ -1,7 +1,7 @@
 from .base import *
 
 AUTHENTICATION_BACKENDS = [
-    "rsf.auth.DevAuthentication",
+    "rsf.auth.RequestAuthentication",
 ]
 
 DEBUG = False

@@ -19,5 +19,5 @@ except ImportError:
     pass
 
 AUTHENTICATION_BACKENDS = [
-    "rsf.auth.DevAuthentication",
+    "rsf.auth.RequestAuthentication",
 ]

@@ -41,6 +41,7 @@
   justify-content: center;
   text-align: center;
   z-index: 1;
+  color: #f0f0f0;
 }
 
 .lefttext .textwrap h1 {
