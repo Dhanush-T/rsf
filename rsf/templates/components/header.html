@@ -6,9 +6,9 @@
   <div class="container-fluid">
     <a class="navbar-brand d-flex" href="#">
       <img src="{% static 'images/logo.png' %}" class="img-fluid"/>
-      <div class="text-center ps-3 text-danger" style="font-size: 30px"id="brand">
-        <b>Research Scholar Forum</b> <br/>
-        <small>NIT-Tiruchirappalli</small>
+      <div class="text-center ps-3" style="font-size: 26px; color: #022c56;" id="brand">
+        <b>Research Scholars Forum <br/>
+        NIT Tiruchirappalli</b>
       </div>
     </a>
     <button
@@ -26,11 +26,16 @@
       <ul class="navbar-nav m-auto my-2">
         {% for item in nav_menu %}
           <li class="nav-item">
-            <a class="nav-link" id="nav-link" href="{%if item.nav_page%}{{item.nav_page.url}}{%else%}{{item.link_url}}{%endif%}">{{ item.nav_name }}</a>
+            {% if item.nav_page.url == request.path %}
+              <a class="nav-link" id="nav-link" style="color: #f63d3d !important; border-bottom: 2px solid #f63d3d;" href="{%if item.nav_page%}{{item.nav_page.url}}{%else%}{{item.link_url}}{%endif%}">{{ item.nav_name }}</a>
+            {% else %}
+              <a class="nav-link" id="nav-link" href="{%if item.nav_page%}{{item.nav_page.url}}{%else%}{{item.link_url}}{%endif%}">{{ item.nav_name }}</a>
+            {% endif %}
+            <!-- <a class="nav-link" id="nav-link" href="{%if item.nav_page%}{{item.nav_page.url}}{%else%}{{item.link_url}}{%endif%}">{{ item.nav_name }}</a> -->
           </li>
         {% endfor %}
         <li class="nav-item">
-          <a class="nav-link" id="nav-link" style="color: #f63d3d !important; border-bottom: 2px solid #f63d3d;" href="/admin">Login</a>
+          <a class="nav-link" id="nav-link" href="/admin">Login</a>
         </li>
       </ul>
     </div>

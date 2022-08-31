@@ -29,17 +29,14 @@
   width: 35%;
   height: 70%;
   margin:auto;
-  justify-content: center;
   display: flex;
   float: left;
-  text-align: center;
+  padding: 40px;
 }
 
 .lefttext .textwrap {
   margin: 25% 10px 0px 10px;
   width: 100%;
-  justify-content: center;
-  text-align: center;
   z-index: 1;
   color: #f0f0f0;
 }
@@ -50,8 +47,6 @@
   font-size: 50px;
   padding: 0;
   color: #f0f0f0;
-  justify-content: center;
-  text-align: center;
   margin: 0;
 }
 .lefttext .textwrap p {
@@ -59,8 +54,6 @@
   font-family: "Oswald", cursive;
   padding: 0;
   color: #f0f0f0;
-  justify-content: center;
-  text-align: center;
 }
 
 #navicon {

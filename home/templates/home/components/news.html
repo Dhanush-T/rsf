@@ -1,28 +1,31 @@
-{% load static %}
+{% load static %} 
+{% load wagtailcore_tags %}
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/news.css' %}">
-{% endblock extra_css %}
+<link rel="stylesheet" href="{% static 'css/events_news.css' %}" />
+{% endblock extra_css %} 
 {% block content %}
-    {% if self.news.all|length %}
+{% if self.news.all|length %}
     <div class="circulars containTitle mb-5">
         <div class="pb-4">
             <div class="text-center">
               <div class="display-3">News</div>
             </div>
         </div>
-        <div class="linksContainer">
-            <div class="links row">
-                {% for item in self.news.all %}
-                    <div class="col-xs-6 col-sm-4">
-                        <div class="linkBox">
-                        <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="link">
-                            {{item.name}}
-                        </a>
-                        </div>
-                    </div>
-                {% endfor %}
+        
+        <div class="owl-carousel">
+        {% for item in self.news.all %}
+        <div class="card-container-1" style="margin: auto;">
+            <div class="info-container">
+              <a class="event-name"  href="{{item.url}}">
+                {{item.name}}
+              </a>
+              <div class="event-location">
+                {{ item.description|richtext }}
+              </div>
             </div>
+          </div>
+        {% endfor %}   
         </div>
     </div>
     {% endif %}
-{% endblock content %}
+{% endblock content %} 

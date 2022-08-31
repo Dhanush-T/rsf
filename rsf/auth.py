@@ -132,7 +132,7 @@ class RequestAuthentication(ModelBackend):
                             group=group, page=page, permission_type=permission_type
                         )
 
-                    for permission in ["add_image", "change_image", "view_image"]:
+                    for permission in ["add_image", "change_image"]:
                         GroupCollectionPermission.objects.create(
                             group=group,
                             collection=Collection.objects.filter(name="Root").first(),
@@ -227,7 +227,7 @@ class IMAPAuthentication(ModelBackend):
                             group=group, page=page, permission_type=permission_type
                         )
 
-                    for permission in ["add_image", "change_image", "view_image"]:
+                    for permission in ["add_image", "change_image"]:
                         GroupCollectionPermission.objects.create(
                             group=group,
                             collection=Collection.objects.filter(name="Root").first(),
@@ -324,7 +324,7 @@ class DevAuthentication(ModelBackend):
                             group=group, page=page, permission_type=permission_type
                         )
 
-                    for permission in ["add_image", "change_image", "view_image"]:
+                    for permission in ["add_image", "change_image"]:
                         GroupCollectionPermission.objects.create(
                             group=group,
                             collection=Collection.objects.filter(name="Root").first(),

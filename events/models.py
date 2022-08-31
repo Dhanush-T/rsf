@@ -36,13 +36,7 @@ class Event(Orderable):
     venue = models.CharField(max_length=255, blank=False, null=False)
     date = models.DateField(blank=False, null=False)
     time = models.TimeField(blank=False, null=False)
-    details = models.ForeignKey(
-        "wagtailcore.Page",
-        null=True,
-        blank=False,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
+    
 
     registeration_link = models.URLField(max_length=255, blank=True, null=True)
 
@@ -52,6 +46,5 @@ class Event(Orderable):
         FieldPanel("venue"),
         FieldPanel("date"),
         FieldPanel("time"),
-        FieldPanel("details"),
         FieldPanel("registeration_link"),
     ]

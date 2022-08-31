@@ -1,8 +1,8 @@
 {% load static %} {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/events.css' %}" />
+<link rel="stylesheet" href="{% static 'css/events_news.css' %}" />
 {% endblock extra_css %} 
 {% block content %}
-{% if self.events.all|length %}
+{% if events.all|length %}
     <div class="circulars containTitle mb-5">
         <div class="pb-4">
             <div class="text-center">
@@ -11,21 +11,23 @@
         </div>
         
         <div class="owl-carousel">
-        {% for item in self.events.all %}
+        {% for item in events.all %}
         <div class="card-container" style="margin: auto;">
             <div class="photo-container">
               <div class="date">
-                <div class="day">{{item.date_time|date:"d" }}</div>
-                <div class="month">{{item.date_time|date:"M" }}</div>
+                <div class="day">{{item.date|date:"d" }}</div>
+                <div class="month">{{item.date|date:"M" }}</div>
               </div>
               <div class="image"></div>
             </div>
             <div class="info-container">
-              <a class="event-name"  href="{{item.url}}">
-                {{item.title}}
-              </a>
-              <div class="event-location">
-                {{item.venue}}
+              <div class="text-container">
+                <a class="event-name"  href="{{item.url}}">
+                  {{item.name}}
+                </a>
+                <div class="event-location">
+                  {{item.venue}}
+                </div>
               </div>
             </div>
           </div>

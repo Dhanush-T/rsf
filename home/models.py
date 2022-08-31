@@ -7,6 +7,8 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
+from events.models import Event
+import datetime
 
 
 class CarouselImages(Orderable):
@@ -29,29 +31,16 @@ class CarouselImages(Orderable):
     ]
 
 
-class Events(Orderable):
-
-    title = models.CharField(max_length=255, blank=False, null=True)
-    page = ParentalKey("home.HomePage", related_name="events")
-    url = models.URLField(blank=False, null=True)
-    date_time = models.DateTimeField(blank=False, null=True)
-    venue = models.CharField(max_length=255, blank=False, null=True)
-
-    panel = [
-        FieldPanel("name"),
-        FieldPanel("external_link"),
-        FieldPanel("internal_link"),
-    ]
-
-
 class News(Orderable):
 
     name = models.CharField(max_length=255, blank=False, null=True)
     page = ParentalKey("home.HomePage", related_name="news")
     url = models.URLField(blank=False, null=True)
+    description = RichTextField(blank=True)
     panel = [
         FieldPanel("name"),
         FieldPanel("url"),
+        FieldPanel("description"),
     ]
 
 
@@ -61,14 +50,11 @@ class HomePage(Page):
 
     about = RichTextField(blank=False, null=True)
 
-    side_heading = models.CharField(max_length=255, blank=False, null=True)
-
     side_text = RichTextField(blank=False, null=True)
 
     content_panels = Page.content_panels + [
         MultiFieldPanel(
             [
-                FieldPanel("side_heading"),
                 FieldPanel("side_text"),
             ],
             heading="Left Side Content",
@@ -78,12 +64,6 @@ class HomePage(Page):
                 InlinePanel("carousel_images", min_num=1, label="Image"),
             ],
             heading="Carousel Images",
-        ),
-        MultiFieldPanel(
-            [
-                InlinePanel("events", min_num=0, label="Event"),
-            ],
-            heading="Events",
         ),
         MultiFieldPanel(
             [
@@ -105,7 +85,9 @@ class HomePage(Page):
 
         
         all_events = (
-            Events.objects.filter().order_by("-date_time")
+            Event.objects.filter(
+                date__gte=datetime.date.today()
+            ).order_by("-date")
         )
         context["events"] = all_events
         events_count = all_events.count()

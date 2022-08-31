@@ -64,7 +64,7 @@
 
 .section-team .single-person .person-info .full-name {
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -147,7 +147,6 @@ span.population {
 }
 
 .three h1 {
-  text-shadow: 0px 0px 10px #00000088;
   color: #022c56;
   font-size: 28px;
   font-weight: 500;
