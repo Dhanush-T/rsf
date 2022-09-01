@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import Permission, Group
@@ -132,10 +133,13 @@ class RequestAuthentication(ModelBackend):
                             group=group, page=page, permission_type=permission_type
                         )
 
-                    for permission in ["add_image", "change_image"]:
+                    root_collection = Collection.get_first_root_node()
+                    root_collection.add_child(name=username)
+
+                    for permission in ["add_image", "change_image", "view_image"]:
                         GroupCollectionPermission.objects.create(
                             group=group,
-                            collection=Collection.objects.filter(name="Root").first(),
+                            collection=Collection.objects.filter(name=username).first(),
                             permission=Permission.objects.get(codename=permission),
                         )
 
@@ -227,10 +231,13 @@ class IMAPAuthentication(ModelBackend):
                             group=group, page=page, permission_type=permission_type
                         )
 
-                    for permission in ["add_image", "change_image"]:
+                    root_collection = Collection.get_first_root_node()
+                    root_collection.add_child(name=username)
+
+                    for permission in ["add_image", "change_image", "view_image"]:
                         GroupCollectionPermission.objects.create(
                             group=group,
-                            collection=Collection.objects.filter(name="Root").first(),
+                            collection=Collection.objects.filter(name=username).first(),
                             permission=Permission.objects.get(codename=permission),
                         )
 
@@ -324,10 +331,13 @@ class DevAuthentication(ModelBackend):
                             group=group, page=page, permission_type=permission_type
                         )
 
-                    for permission in ["add_image", "change_image"]:
+                    root_collection = Collection.get_first_root_node()
+                    root_collection.add_child(name=username)
+
+                    for permission in ["add_image", "change_image", "view_image"]:
                         GroupCollectionPermission.objects.create(
                             group=group,
-                            collection=Collection.objects.filter(name="Root").first(),
+                            collection=Collection.objects.filter(name=username).first(),
                             permission=Permission.objects.get(codename=permission),
                         )
 

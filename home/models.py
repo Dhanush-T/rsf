@@ -7,6 +7,7 @@ from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.core.models import Page, Orderable
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.documents.edit_handlers import DocumentChooserPanel
 from events.models import Event
 import datetime
 
@@ -35,11 +36,27 @@ class News(Orderable):
 
     name = models.CharField(max_length=255, blank=False, null=True)
     page = ParentalKey("home.HomePage", related_name="news")
-    url = models.URLField(blank=False, null=True)
+    url = models.URLField(blank=True, null=True)
+    image = models.ForeignKey(
+        "wagtailimages.Image",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
+    file = models.ForeignKey(
+        "wagtaildocs.Document",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+    )
     description = RichTextField(blank=True)
     panel = [
         FieldPanel("name"),
         FieldPanel("url"),
+        ImageChooserPanel("image"),
+        DocumentChooserPanel("document"),
         FieldPanel("description"),
     ]
 

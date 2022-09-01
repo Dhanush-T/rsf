@@ -1,3 +1,4 @@
+from wagtail.models import Collection
 from django.utils.html import format_html
 from django.templatetags.static import static
 
@@ -13,3 +14,5 @@ def global_admin_css():
 
 admin.site.register(ResearchesPage)
 admin.site.register(ResearcherPage)
+admin.site.register(Collection)
+admin.site.site_header = "RSF Admin"

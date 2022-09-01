@@ -1,5 +1,5 @@
 {% load static %} 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/events_news.css' %}" />
 {% endblock extra_css %} 
@@ -16,7 +16,9 @@
         {% for item in self.news.all %}
         <div class="card-container-1" style="margin: auto;">
             <div class="info-container">
-              <a class="event-name"  href="{{item.url}}">
+                {% image item.image original as tmp_photo %}
+              <a class="event-name"  href="{% if item.url %}{{item.url}}{% elif item.image %}{{tmp_photo.url}}{% else %}{{item.file.url}}{% endif %}">
+                {{item.title}}
                 {{item.name}}
               </a>
               <div class="event-location">

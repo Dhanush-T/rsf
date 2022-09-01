@@ -39,3 +39,9 @@
     opacity: 1;
   }
 }
+
+#bio {
+  max-height: 110px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

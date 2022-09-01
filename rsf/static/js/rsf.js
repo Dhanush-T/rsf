@@ -5,7 +5,7 @@ window.onscroll = function () {
 
 window.onload = function () {
   window.scrollTo(0, 0);
-  if (document.body.offsetHeight < window.innerHeight) {
+  if (document.body.offsetHeight - 150 < window.innerHeight) {
     document.getElementsByTagName("footer")[0].classList.add("footer-fixed");
   }
 };

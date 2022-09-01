@@ -23,3 +23,9 @@ $(document).ready(function () {
     itemsMobile : [479,1]
   });
 });
+
+const container = document.getElementById("carousel-image-conrainer");
+const image = document.getElementById("carousel-image");
+
+image.style.marginTop = container.offsetHeight * 0.7 / 2 - image.offsetHeight / 2 + 40 + "px";
+image.style.marginBottom = container.offsetHeight * 0.7 / 2 - image.offsetHeight / 2 + 40 + "px";

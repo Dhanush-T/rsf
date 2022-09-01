@@ -1,7 +1,5 @@
 .homeCarousel img {
-    height: 80vh;
     inline-size: inherit;
-    max-height: 70vh;
     width: 60%;
 }
 

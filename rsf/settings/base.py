@@ -183,4 +183,4 @@ WAGTAILUSERS_PASSWORD_ENABLED = False
 
 WAGTAIL_PASSWORD_RESET_ENABLED = False
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:25688', 'https://*.sailesh.software', 'https://*.nitt.edu']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://localhost:25688', 'https://*.muhesh.studio', 'https://*.nitt.edu']

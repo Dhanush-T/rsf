@@ -7,7 +7,7 @@ from django.db.models import Q
 
 class IndexView(WagtailIndexView):
     def get_queryset(self):
-        return super().get_queryset().filter(~Q(name__startswith="4"))
+        return super().get_queryset() #.filter(~Q(name__startswith="4"))
 
 
 class GroupViewSet(WagtailGroupViewSet):

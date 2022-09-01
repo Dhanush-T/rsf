@@ -4,25 +4,25 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Montserrat:wght@700&family=Nosifer&family=Oswald:wght@400;600&family=Roboto:wght@100;300&family=Rubik+Glitch&display=swap");
 
-.ct{
-  clip-path: polygon(0 0, 100% 0%, 100% 10%, 10% 100%, 0% 100%);
-}
 
 .main {
   margin: 0;
   justify-content: center;
   height: 45rem;
+  background-color: #022c56; /* For browsers that do not support gradients */
+  background-image: linear-gradient(
+    170deg,
+     #022c56 0%,
+     #022c56 60%,
+    #f0f0f0 60.1%
+  );
 }
 
 .rightimage {
+  height: 70%;
   width: 60%;
   padding: 40px;
-  display: flex;
   float: right;
-}
-
-.rightimage img {
-  border: 2px solid #f0f0f0;
 }
 
 .lefttext {
@@ -35,24 +35,9 @@
 }
 
 .lefttext .textwrap {
-  margin: 25% 10px 0px 10px;
+  margin: auto;
   width: 100%;
   z-index: 1;
-  color: #f0f0f0;
-}
-
-.lefttext .textwrap h1 {
-  width: 100%;
-  overflow-wrap: break-word;
-  font-size: 50px;
-  padding: 0;
-  color: #f0f0f0;
-  margin: 0;
-}
-.lefttext .textwrap p {
-  font-size: 20px;
-  font-family: "Oswald", cursive;
-  padding: 0;
   color: #f0f0f0;
 }
 

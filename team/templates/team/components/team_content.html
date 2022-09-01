@@ -29,9 +29,9 @@
                 <p class="text-capitalize text-muted small blockquote-footer m-1">
                   {{page.position}}
                 </p>
-                <p class="small text-muted mb-0">
-                  {{page.profile_page.bio|richtext|truncatechars:300}}
-                </p>
+                <div class="small text-muted mb-0" id="bio">
+                  {{page.profile_page.bio|richtext}}
+                </div>
                 <div class="social social-gray">
                   {% if page.profile_page.phone_number %}
                   <button
