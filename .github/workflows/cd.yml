@@ -1,0 +1,29 @@
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - "prod"
+
+jobs:
+    
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: delta.nitt.edu
+        port: 22
+        username: dhanusht
+        password: ${{ secrets.SSH_KEY }}
+        script: |
+          cd rsf
+          git remote -v
+          git branch
+          git checkout .
+          git fetch origin prod
+          git reset --hard origin/prod
+          docker-compose down
+          docker-compose up --build -d
