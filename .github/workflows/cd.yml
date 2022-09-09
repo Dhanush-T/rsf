@@ -20,10 +20,9 @@ jobs:
         password: ${{ secrets.SSH_KEY }}
         script: |
           cd rsf
-          git remote -v
-          git branch
+          git branch -a
           git checkout .
-          git fetch origin prod
-          git reset --hard origin/prod
+          git pull --rebase origin prod
+          echo "${{ secrets.SSH_KEY }}" | sudo rm -rf db/
           docker-compose down
           docker-compose up --build -d

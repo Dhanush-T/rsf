@@ -1,10 +1,11 @@
+from pickle import TRUE
 from .base import *
 
 AUTHENTICATION_BACKENDS = [
     "rsf.auth.RequestAuthentication",
 ]
 
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
