@@ -8,7 +8,7 @@
 .main {
   margin: 0;
   justify-content: center;
-  height: 45rem;
+  height: 55rem;
   background-color: #022c56; /* For browsers that do not support gradients */
   background-image: linear-gradient(
     170deg,
@@ -52,15 +52,15 @@
   float: left;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .lefttext {
-    padding: 0;
+    padding: 40px;
     display: flex;
     width: 100%;
     margin-top: -10%;
   }
   .rightimage {
-    display: flex;
+    display: block;
     width: 100%;
     margin-top: 0;
   }
