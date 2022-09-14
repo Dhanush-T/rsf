@@ -68,6 +68,7 @@ h1.first-name {
   top: -50px;
   color: #022c56;
   text-shadow: 0 0 10px #00000077;
+  white-space: nowrap;
   
 }
 
