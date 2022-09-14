@@ -19,6 +19,7 @@ class ResearcherPage(Page):
     parent_page_types = [
         "researchers.ResearchesPage",
     ]
+
     image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -87,7 +88,7 @@ class ResearcherPage(Page):
         blank=True,
         null=True,
         default=None,
-        help_text="Link to Facebook profile",
+        help_text="Link to ORCID profile",
     )
 
     linkedin_link = models.URLField(
@@ -136,6 +137,7 @@ class ResearcherPage(Page):
         self.title = self.title
         self.slug = slugify(self.title)
         return super().clean()
+
 
 
 class Information(Orderable):
@@ -275,4 +277,3 @@ class ResearchesPage(Page):
                 context["departments"].append(department)
         context["childpages"] = ResearcherPage.objects.live().public().order_by("date_of_joining")
         return context
-    
