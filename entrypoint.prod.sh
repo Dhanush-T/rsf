@@ -5,7 +5,6 @@ until psql postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${SQL_HOST}/${POSTGR
     sleep 1
 done
 
-python manage.py makemigrations --settings=rsf.settings.production
 python manage.py migrate --settings=rsf.settings.production
 python manage.py create_admin --settings=rsf.settings.production
 python manage.py collectstatic --settings=rsf.settings.production --no-input --clear

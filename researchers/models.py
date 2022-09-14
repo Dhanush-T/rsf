@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from wagtail.admin.forms import WagtailAdminPageForm
 
@@ -18,7 +19,6 @@ class ResearcherPage(Page):
     parent_page_types = [
         "researchers.ResearchesPage",
     ]
-
     image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -29,6 +29,7 @@ class ResearcherPage(Page):
     )
     bio = RichTextField(blank=False, null=True)
     intrests = RichTextField(blank=False, null=True)
+    date_of_joining = models.DateField(blank=False, null=True, default=datetime.date.today)
     department = models.CharField(
         max_length=225,
         blank=False,
@@ -104,6 +105,7 @@ class ResearcherPage(Page):
                 ImageChooserPanel("image"),
                 FieldPanel("bio"),
                 FieldPanel("intrests"),
+                FieldPanel("date_of_joining"),
             ]
         ),
         MultiFieldPanel(
@@ -134,7 +136,6 @@ class ResearcherPage(Page):
         self.title = self.title
         self.slug = slugify(self.title)
         return super().clean()
-
 
 
 class Information(Orderable):
@@ -272,4 +273,6 @@ class ResearchesPage(Page):
         for department in self.departments:
             if ResearcherPage.objects.filter(department=department).count() != 0:
                 context["departments"].append(department)
+        context["childpages"] = ResearcherPage.objects.live().public().order_by("date_of_joining")
         return context
+    
