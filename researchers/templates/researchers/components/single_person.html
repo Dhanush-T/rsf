@@ -9,8 +9,8 @@
       <h1 class="first-name">{{ self.name }}</h1>
       <h2>Bio</h2>
       <p>{{self.bio|richtext}}</p>
-      <h2>Intrests</h2>
-      <p>{{self.intrests|richtext}}</p>
+      <h2>Interests</h2>
+      <p>{{self.interests|richtext}}</p>
       <h2>Date of Joining</h2>
       <p>{{self.date_of_joining|date:"d F, Y"}}</p>
       {% for information in self.information.all %} {% if information.title%}

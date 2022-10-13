@@ -29,7 +29,7 @@ class ResearcherPage(Page):
         default=None,
     )
     bio = RichTextField(blank=False, null=True)
-    intrests = RichTextField(blank=False, null=True)
+    interests = RichTextField(blank=False, null=True)
     date_of_joining = models.DateField(blank=False, null=True, default=datetime.date.today)
     department = models.CharField(
         max_length=225,
@@ -105,7 +105,7 @@ class ResearcherPage(Page):
                 FieldPanel("name"),
                 ImageChooserPanel("image"),
                 FieldPanel("bio"),
-                FieldPanel("intrests"),
+                FieldPanel("interests"),
                 FieldPanel("date_of_joining"),
             ]
         ),

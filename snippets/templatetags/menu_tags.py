@@ -58,6 +58,50 @@ def dept_short(string):
     elif string == "CECASE":
         return "CECASE"
 
+@register.filter(name='dept_shorter')
+def dept_shorter(words):
+    
+    output = ""
+    for word in words:
+        if word == "Architecture":
+            output+= "Arch, "
+        elif word == "Chemical Engineering":
+            output+= "Chem, "
+        elif word == "Civil Engineering":
+            output+= "Civil, "
+        elif word == "Chemistry":
+            output+= "Chem, "
+        elif word == "Computer Applications":
+            output+= "CA, "
+        elif word == "Computer Science and Engineering":
+            output+= "CSE, "
+        elif word == "Electrical and Electronics Engineering":
+            output+= "EEE, "
+        elif word == "Electronics and Communication Engineering":
+            output+= "ECE, "
+        elif word == "Humanities and Social Sciences":
+            output+= "HSS, "
+        elif word == "Instrumentation and Control Engineering":
+            output+= "ICE, "
+        elif word == "Mechanical Engineering":
+            output+= "Mech, "
+        elif word == "Metallurgical and Materials Engineering":
+            output+= "Meta, "
+        elif word == "Physics":
+            output+= "Phy, "
+        elif word == "Production Engineering":
+            output+= "Prod, "
+        elif word == "Management Studies":
+            output+= "Mgmt, "
+        elif word == "Mathematics":
+            output+= "Math, "
+        elif word == "Energy and Environment":
+            output+= "Env, "
+        elif word == "CECASE":
+            output+= "CECASE, "
+    
+    return output[:-2]
+
 @register.filter(name='send_filter_dept')
 def send_filter_dept(seminars, dept):
     return seminars.filter(department=dept)

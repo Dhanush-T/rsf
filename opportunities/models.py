@@ -1,11 +1,10 @@
 import datetime
 from django.db import models
-
+from django import forms
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
-
 from wagtail.core.models import Page, Orderable
 from modelcluster.fields import ParentalKey
-
+from multiselectfield import MultiSelectField
 
 class OpportunitiesPage(Page):
     max_count = 1
@@ -34,43 +33,48 @@ class Opp(Orderable):
 
     name = models.CharField(max_length=255, blank=False, null=False)
     institute = models.CharField(max_length=255, blank=False, null=False)
-    department = models.CharField(
-        max_length=225,
-        blank=False,
-        null=False,
+    department = MultiSelectField(
+        max_length=255,
+        blank=True,
+        null=True,
         choices=(
-            ("Architecture", "Architecture"),
-            ("Chemical Engineering", "Chemical Engineering"),
-            ("Civil Engineering", "Civil Engineering"),
-            ("Chemistry", "Chemistry"),
-            ("Computer Applications", "Computer Applications"),
-            ("Computer Science and Engineering", "Computer Science and Engineering"),
-            (
-                "Electrical and Electronics Engineering",
-                "Electrical and Electronics Engineering",
-            ),
-            (
-                "Electronics and Communication Engineering",
-                "Electronics and Communication Engineering",
-            ),
-            ("Humanities and Social Sciences", "Humanities and Social Sciences"),
-            (
-                "Instrumentation and Control Engineering",
-                "Instrumentation and Control Engineering",
-            ),
-            ("Mechanical Engineering", "Mechanical Engineering"),
-            (
-                "Metallurgical and Materials Engineering",
-                "Metallurgical and Materials Engineering",
-            ),
-            ("Physics", "Physics"),
-            ("Production Engineering", "Production Engineering"),
-            ("Management Studies", "Management Studies"),
-            ("Mathematics", "Mathematics"),
-            ("Energy and Environment", "Energy and Environment"),
-            ("CECASE", "CECASE"),
-        ),
-        default="Professor",
+                    ("Architecture", "Architecture"),
+                    ("Chemical Engineering", "Chemical Engineering"),
+                    ("Civil Engineering", "Civil Engineering"),
+                    ("Chemistry", "Chemistry"),
+                    ("Computer Applications", "Computer Applications"),
+                    (
+                        "Computer Science and Engineering",
+                        "Computer Science and Engineering",
+                    ),
+                    (
+                        "Electrical and Electronics Engineering",
+                        "Electrical and Electronics Engineering",
+                    ),
+                    (
+                        "Electronics and Communication Engineering",
+                        "Electronics and Communication Engineering",
+                    ),
+                    (
+                        "Humanities and Social Sciences",
+                        "Humanities and Social Sciences",
+                    ),
+                    (
+                        "Instrumentation and Control Engineering",
+                        "Instrumentation and Control Engineering",
+                    ),
+                    ("Mechanical Engineering", "Mechanical Engineering"),
+                    (
+                        "Metallurgical and Materials Engineering",
+                        "Metallurgical and Materials Engineering",
+                    ),
+                    ("Physics", "Physics"),
+                    ("Production Engineering", "Production Engineering"),
+                    ("Management Studies", "Management Studies"),
+                    ("Mathematics", "Mathematics"),
+                    ("Energy and Environment", "Energy and Environment"),
+                    ("CECASE", "CECASE"),
+                ),
     )
 
     last_date = models.DateField(blank=False, null=False)
@@ -79,7 +83,10 @@ class Opp(Orderable):
     panels = [
         FieldPanel("name"),
         FieldPanel("institute"),
-        FieldPanel("department"),
+        FieldPanel(
+            "department",
+            widget=forms.CheckboxSelectMultiple
+        ),
         FieldPanel("last_date"),
         FieldPanel("more_details"),
     ]
