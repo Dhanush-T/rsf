@@ -110,7 +110,7 @@ class RequestAuthentication(ModelBackend):
                         name=username,
                         email=username + "@nitt.edu",
                         phone_number="",
-                        intrests="Yet to be filled",
+                        interests="Yet to be filled",
                     )
 
                     image = None
@@ -210,7 +210,7 @@ class IMAPAuthentication(ModelBackend):
                         name=username,
                         email=username + "@nitt.edu",
                         phone_number="",
-                        intrests="Yet to be filled",
+                        interests="Yet to be filled",
                     )
 
                     image = None
